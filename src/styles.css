@@ -1,0 +1,129 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: "Montserrat";
+  /* text-align: center; */
+  background-color: #39394d;
+  color: aliceblue;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat-Bold";
+  text-align: center;
+}
+
+.dcre-main-container {
+  padding: 0 5% 0 5%;
+}
+
+.dcre-top-pad {
+  height: 300px;
+}
+
+.homecarouselitem {
+  display: block;
+  object-fit: contain;
+  height: 600px;
+  margin: 2% auto;
+}
+.dcre-hdr-picture {
+  display: block;
+  object-fit: contain;
+  width: 90%;
+  margin: 2% auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mypad {
+  padding: 1.5em 1em 0 1em;
+}
+
+.one-contact {
+  border: medium solid aliceblue;
+  padding: 1% 1%;
+}
+.contactname {
+  text-align: left;
+  font-size: 2rem;
+}
+
+.contact-image {
+  /* display: inline-flex; */
+  /* display: block; */
+  object-fit: contain;
+  margin-left: 0px;
+  /* margin-right: auto; */
+  height: 250px;
+  max-width: 90%;
+  /* width: 95%; */
+  /* object-position: center center; */
+}
+
+.contact-blurb {
+  margin-left: 10px;
+  margin-right: auto;
+}
+
+.anchorlinktext {
+  /* color: #bbcae9; */
+}
+
+.mynavbarbrand {
+  font-size: 2.25rem;
+  color: #24d860;
+  /* background-color: rgb(98, 110, 133); */
+}
+
+.my-custom-colors {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+.my-dark01-colors {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+.my-dark02-colors {
+  background-color: #232325;
+  color: rgb(192, 196, 199);
+}
+
+#home {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#commercial {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#management {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#receivership {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#links {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#contact {
+  background-color: #141829;
+  color: aliceblue;
+}
+
+#footer {
+  color: aliceblue;
+}
