@@ -14,6 +14,8 @@ import { ManagementComponent } from './management/management.component';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 
 @NgModule({
    declarations: [
@@ -31,7 +33,9 @@ import { appRoutes } from './routes';
    ],
    imports: [
       BrowserModule,
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      BrowserAnimationsModule,
+      NgxNavbarModule
    ],
    providers: [],
    bootstrap: [

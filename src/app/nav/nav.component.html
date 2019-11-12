@@ -1,59 +1,42 @@
-<nav class="navbar navbar-expand-xl">
-  <a class="navbar-brand active" href="#">
+<nav NgxNavbarDynamicExpand class="navbar navbar-expand-xl">
+    <a class="navbar-brand active" href="#">
     Delmar
   </a>
   <div class="my-navbar">
-  <button
+   <button
     class="navbar-toggler custom-toggler"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
+    (click)="collapse.toggle()"
     aria-controls="navbarNavDropdown"
     aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
+    aria-label="Toggle navigation" >
+
+    <span class="navbar-toggler-icon d-flex align-items-center justify-content-center">
+      <i class="fas fab-bars text-black"> </i>
+    </span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/commercial']">Commercial Real Estate</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/management']">Property Management</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/receivership']" >Receivership</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/links']">Links</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/contact']">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/about']">About</a>
-      </li>
-<!--             <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
- -->
-    </ul>
+  <ngx-navbar-collapse id="navbarNavDropdown" #collapse="ngxNavbarCollapse">
+
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/commercial']">Commercial Real Estate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/management']">Property Management</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/receivership']" >Receivership</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/links']">Links</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/contact']">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/about']">About</a>
+        </li>
+      </ul>
+    </ngx-navbar-collapse>
   </div>
-</div>
 </nav>
