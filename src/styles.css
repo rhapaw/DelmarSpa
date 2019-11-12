@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  font-family: "Montserrat";
-  /* text-align: center; */
-  --my-primary-color: white;
-  --my-primary-bg: rgb(4, 4, 77);
-  --my-secondary-color: yellow;
-  --my-secondary-bg: purple;
-  --my-info-color: purple;
+:root {
+  --my-primary-color: #eeeee7;
+  --my-primary-bg: #0f3193;
+  --my-secondary-color: #eeeee7;
+  --my-secondary-bg: #2c2929;
+  --my-info-color: #09576e;
   --my-info-bg: white;
   --my-brand-color: blue;
   --my-brand-bg: white;
   --my-navbar-color: white;
-  --my-navbar-bg: rgb(119, 119, 129);
+  --my-navbar-color-active: #868181;
+  --my-navbar-bg: #0f3193;
   --my-fake-color: white;
+}
+
+body {
+  font-family: "Montserrat";
+  /* text-align: center; */
 }
 
 h1,
@@ -42,8 +46,8 @@ h6 {
 .dcre-hdr-picture {
   display: block;
   object-fit: contain;
-  width: 90%;
-  margin: 2% auto;
+  width: 100%;
+  margin: 0% auto;
   margin-left: auto;
   margin-right: auto;
 }
@@ -63,18 +67,13 @@ h6 {
 .contact-image {
   /* display: inline-flex; */
   /* display: block; */
-  object-fit: contain;
+  object-fit: fill;
   margin-left: 0px;
   /* margin-right: auto; */
   height: 250px;
   max-width: 90%;
   /* width: 95%; */
   /* object-position: center center; */
-}
-
-.contact-blurb {
-  margin-left: 10px;
-  margin-right: auto;
 }
 
 .mynavbarbrand {
@@ -117,13 +116,8 @@ h6 {
 }
 
 .router-link-active {
-  color: #f10a0a !important;
+  color: var(--my-navbar-color-active) !important;
 }
-
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
 
 #footer {
   margin-top: 20px;
@@ -132,13 +126,20 @@ h6 {
 .my-primary {
   color: var(--my-primary-color);
   background: var(--my-primary-bg);
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.my-primary-no-pad {
+  color: var(--my-primary-color);
+  background: var(--my-primary-bg);
 }
 
 .my-secondary {
   color: var(--my-secondary-color);
   background: var(--my-secondary-bg);
   padding-top: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 20px;
 }
 
 .my-info {

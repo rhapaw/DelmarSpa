@@ -1,8 +1,10 @@
 <div id="contact" class="container-fluid">
   <div class="row">
-    <div class="col-lg-8">
-      <div class="my-secondary">
-        <h1>CONTACT US</h1>
+    <div class="col-lg-7">
+      <div class="row my-secondary">
+        <div class="col block-center text-center">
+          <h1>CONTACT US</h1>
+        </div>
       </div>
 
       <div>
@@ -32,7 +34,7 @@
         <!-- Start contacts loop -->
         <div *ngFor="let contact of contacts">
           <div class="row one-contact my-primary">
-            <div class="col-xl-4">
+            <div class="col-lg-4">
               <p *ngIf="contact.pictureName">
                 <img src="assets/staffpictures/{{ contact.pictureName }}" alt="Picture of  {{ contact.fullName }}"
                   class="contact-image img-responsive" />
@@ -52,7 +54,7 @@
                   {{ contact.emailAddress }}</a>
               </p>
             </div>
-            <div class="col-xl-8 contact-blurb" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
+            <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
           </div>
         </div>
         <!-- End contacts loop -->
