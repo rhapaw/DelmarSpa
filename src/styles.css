@@ -12,6 +12,7 @@ body {
   --my-brand-bg:  rgb(119, 119, 129);
   --my-navbar-color: white;
   --my-navbar-bg: rgb(119, 119, 129);
+  --my-fake-color: white;
 }
 
 h1,
