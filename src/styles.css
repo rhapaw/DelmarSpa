@@ -9,7 +9,7 @@ body {
   --my-info-color: purple;
   --my-info-bg: white;
   --my-brand-color: blue;
-  --my-brand-bg:  rgb(119, 119, 129);
+  --my-brand-bg: white;
   --my-navbar-color: white;
   --my-navbar-bg: rgb(119, 119, 129);
   --my-fake-color: white;
@@ -137,6 +137,8 @@ h6 {
 .my-secondary {
   color: var(--my-secondary-color);
   background: var(--my-secondary-bg);
+  padding-top: 10px;
+  padding-bottom: 0px;
 }
 
 .my-info {
