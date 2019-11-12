@@ -2,8 +2,16 @@
 body {
   font-family: "Montserrat";
   /* text-align: center; */
-  background-color: #39394d;
-  color: aliceblue;
+  --my-primary-color: white;
+  --my-primary-bg: rgb(4, 4, 77);
+  --my-secondary-color: yellow;
+  --my-secondary-bg: purple;
+  --my-info-color: purple;
+  --my-info-bg: white;
+  --my-brand-color: blue;
+  --my-brand-bg:  rgb(119, 119, 129);
+  --my-navbar-color: white;
+  --my-navbar-bg: rgb(119, 119, 129);
 }
 
 h1,
@@ -44,7 +52,6 @@ h6 {
 }
 
 .one-contact {
-  border: medium solid aliceblue;
   padding: 1% 1%;
 }
 .contactname {
@@ -75,55 +82,69 @@ h6 {
 
 .mynavbarbrand {
   font-size: 2.25rem;
-  color: #24d860;
-  /* background-color: rgb(98, 110, 133); */
+  color: var(--my-brand-color);
+  background: var(--my-brand-bg);
+    /* background-color: rgb(98, 110, 133); */
 }
 
-.my-custom-colors {
-  background-color: #141829;
-  color: aliceblue;
+.navbar-brand {
+  font-size: 2.25rem !important;
+  color: var(--my-brand-color) !important;
+  background: var(--my-brand-bg) !important;
+    /* background-color: rgb(98, 110, 133); */
 }
 
-.my-dark01-colors {
-  background-color: #141829;
-  color: aliceblue;
+.my-navbar {
+  color: var(--my-navbar-color) !important;
+  background: var(--my-navbar-bg) !important;
 }
 
-.my-dark02-colors {
-  background-color: #232325;
-  color: rgb(192, 196, 199);
+.nav-item .nav-link .nav-custom {
+  color: var(--my-navbar-color) !important;
+  background: var(--my-navbar-bg) !important;
 }
 
-#home {
-  background-color: #141829;
-  color: aliceblue;
+.nav-item {
+  color: var(--my-navbar-color) !important;
+  background: var(--my-navbar-bg) !important;
 }
 
-#commercial {
-  background-color: #141829;
-  color: aliceblue;
+.nav-link {
+  color: var(--my-navbar-color) !important;
+  background: var(--my-navbar-bg) !important;
 }
 
-#management {
-  background-color: #141829;
-  color: aliceblue;
+.nav-custom {
+  color: var(--my-navbar-color) !important;
+  background: var(--my-navbar-bg) !important;
 }
 
-#receivership {
-  background-color: #141829;
-  color: aliceblue;
+.router-link-active {
+  color: #f10a0a !important;
 }
 
-#links {
-  background-color: #141829;
-  color: aliceblue;
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-#contact {
-  background-color: #141829;
-  color: aliceblue;
-}
 
 #footer {
-  color: aliceblue;
+  margin-top: 20px;
 }
+
+.my-primary {
+  color: var(--my-primary-color);
+  background: var(--my-primary-bg);
+}
+
+.my-secondary {
+  color: var(--my-secondary-color);
+  background: var(--my-secondary-bg);
+}
+
+.my-info {
+  color: var(--my-info-color);
+  background: var(--my-info-bg);
+}
+
+

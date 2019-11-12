@@ -1,11 +1,11 @@
 <div id="contact" class="container-fluid">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3 my-secondary">
       <br />
       <h3>CONTACT US</h3>
     </div>
 
-    <div class="col-lg-8">
+    <div class="col-lg-8 my-primary">
       <br />
       <!-- Start Office Address & Phone -->
       <div class="row one-contact">
@@ -32,7 +32,7 @@
 
       <!-- Start contacts loop -->
       <div *ngFor="let contact of contacts">
-        <div class="row one-contact">
+        <div class="row one-contact my-primary">
           <div class="col-xl-4">
             <p *ngIf="contact.pictureName">
               <img
