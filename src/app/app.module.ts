@@ -16,6 +16,8 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { ColorComponent } from './color/color.component';
 
 @NgModule({
    declarations: [
@@ -29,13 +31,15 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
       HeaderComponent,
       FooterComponent,
       ManagementComponent,
-      NavComponent
+      NavComponent,
+      ColorComponent
    ],
    imports: [
       BrowserModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
-      NgxNavbarModule
+      NgxNavbarModule,
+      ColorPickerModule
    ],
    providers: [],
    bootstrap: [
