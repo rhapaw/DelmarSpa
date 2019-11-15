@@ -1,12 +1,15 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12">
+  <div class="row mb-3">
+    <div class="col-lg-8">
       <div class="my-colorpage-secondary mypad">
         <h1>Select Colors for the Website</h1>
       </div>
     </div>
   </div>
-  <div class="row">
+
+
+  <!-- Heading and body colors for most of the stuff on the site -->
+  <div class="row mb-3">
     <div class="col-lg-4">
       <div class="my-secondary mypad">
         <h3>This Is the Heading</h3>
@@ -14,13 +17,13 @@
       <div class="my-primary mypad">
         <p>This is the body text</p>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            efficitur lobortis lacus. Aliquam at urna a urna laoreet faucibus.
-            Pellentesque id orci id tellus dictum ultrices. Vestibulum eu diam
-            ac mauris lacinia faucibus. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Vestibulum at cursus risus. Cras sit amet metus
-            dui. Etiam porttitor interdum erat quis hendrerit. Nullam eu nunc
-            quis neque tempor dapibus.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          efficitur lobortis lacus. Aliquam at urna a urna laoreet faucibus.
+          Pellentesque id orci id tellus dictum ultrices. Vestibulum eu diam
+          ac mauris lacinia faucibus. Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit. Vestibulum at cursus risus. Cras sit amet metus
+          dui. Etiam porttitor interdum erat quis hendrerit. Nullam eu nunc
+          quis neque tempor dapibus.
         </p>
       </div>
     </div>
@@ -28,15 +31,197 @@
       <h3>
         Select heading colors
       </h3>
-      <input [(colorPicker)]="color" [style.background]="color"/>
-
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Text color<br>
+            [{{secondaryColorValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="secondaryColorValue" [style.background]="secondaryColorValue"
+              [cpOutputFormat]="hex" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryColorVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Background color<br>
+            [{{secondaryBgValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="secondaryBgValue" [style.background]="secondaryBgValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryBgVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
       </div>
 
+      <h3>
+        Select body colors
+      </h3>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Text color<br>
+            [{{primaryColorValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="primaryColorValue" [style.background]="primaryColorValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryColorVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Background color<br>
+            [{{primaryBgValue}}]</p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="primaryBgValue" [style.background]="primaryBgValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryBgVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row mypad">
+
+  <div class="row">
+    <div class="col-lg-8">
+      <hr>
+    </div>
   </div>
-  other stuff goes here
+
+  <!-- Navbar colors -->
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="my-navbar mypad">
+        <p>
+          Nav-Bar-Normal-Item <span [style.color]="navbarColorActiveValue">Nav-Bar-Active-Item</span>
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 my-colorpage-primary">
+      <h3>
+        Select navbar colors
+      </h3>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Background color<br>
+            [{{navbarBgValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Normal item color<br>
+            [{{navbarColorValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="navbarColorValue" [style.background]="navbarColorValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Active item color<br>
+            [{{navbarColorActiveValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="navbarColorActiveValue" [style.background]="navbarColorActiveValue"
+              [cpOutputFormat]="hex" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorActiveVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-8">
+        <hr>
+      </div>
+    </div>
+
+  <!-- Footer (info) colors -->
+  <div class="row mb-3">
+    <div class="col-lg-4">
+      <div class="my-info mypad">
+        <p>This is the footer text</p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          efficitur lobortis lacus. Aliquam at urna a urna laoreet faucibus.
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-4 my-colorpage-primary">
+      <h3>
+        Select footer colors
+      </h3>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Text color<br>
+            [{{infoColorValue}}] </p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="infoColorValue" [style.background]="infoColorValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoColorVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Background color<br>
+            [{{infoBgValue}}]</p>
+        </div>
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="infoBgValue" [style.background]="infoBgValue" [cpOutputFormat]="hex"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoBgVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-8">
+        <hr>
+      </div>
+    </div>
+
+  <div class="row mb-3">
+    <div class="row mypad">
+      other stuff goes here
+    </div>
+  </div>
+
+
 </div>
+
+
+
+
 
 
 

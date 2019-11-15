@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 export interface Contact {
   fullName: string;
@@ -12,9 +12,9 @@ export interface Contact {
 }
 
 @Component({
-  selector: "app-contact",
-  templateUrl: "./contact.component.html",
-  styleUrls: ["./contact.component.css"]
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
   contacts: Contact[];
@@ -25,13 +25,13 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     this.contacts = [
       {
-        fullName: "Adrian Young",
-        officePhone: "(909) 945-4586",
-        mobilePhone: "(909) 241-9500",
-        emailAddress: "adrian@delmar1.com",
-        pictureName: "adrianyoung.jpg",
-        position: "President",
-        specialization: "Office/Investment",
+        fullName: 'Adrian Young',
+        officePhone: '(909) 945-4586',
+        mobilePhone: '(909) 241-9500',
+        emailAddress: 'adrian@delmar1.com',
+        pictureName: 'adrianyoung.jpg',
+        position: 'President',
+        specialization: 'Office/Investment',
         blurb: `
         <p>
         Adrian Young, RPA is responsible for the overall operations, strategic planning, market
@@ -46,11 +46,11 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Jim Cordova",
-        officePhone: "(909) 945-4594",
-        emailAddress: "jimc@delmar1.com",
-        pictureName: "jimcordova.jpg",
-        position: "Controller",
+        fullName: 'Jim Cordova',
+        officePhone: '(909) 945-4594',
+        emailAddress: 'jimc@delmar1.com',
+        pictureName: 'jimcordova.jpg',
+        position: 'Controller',
         blurb: `
           <p>
           Jim Cordova is responsible for the overall management of the accounting department. His duties
@@ -68,11 +68,11 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Matt Young",
-        officePhone: "(909) 945-4590",
-        emailAddress: "matty@delmar1.com",
-        pictureName: "mattyoung.jpg",
-        position: "Asset Manager",
+        fullName: 'Matt Young',
+        officePhone: '(909) 945-4590',
+        emailAddress: 'matty@delmar1.com',
+        pictureName: 'mattyoung.jpg',
+        position: 'Asset Manager',
         blurb: `
           <p>
           Matt joined Delmar in 1995 as a property manager and graduated to the position of Controller in
@@ -81,11 +81,11 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Quinn Young",
-        officePhone: "(909) 945-4594",
-        emailAddress: "quinny@delmar1.com",
-        pictureName: "quinnyoung.jpg",
-        position: "Property Manager",
+        fullName: 'Quinn Young',
+        officePhone: '(909) 945-4594',
+        emailAddress: 'quinny@delmar1.com',
+        pictureName: 'quinnyoung.jpg',
+        position: 'Property Manager',
         blurb: `
           <p>
           Quinn Young is responsible for all physical aspects of the properties. He is familiar with commercial
@@ -97,13 +97,13 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Donald Barmakian",
-        officePhone: "(909) 945-4599",
-        mobilePhone: "(909) 223-0025",
-        emailAddress: "donb@delmar1.com",
-        pictureName: "donbarmakian.jpg",
-        specialization: "Industrial/Investment",
-        position: "Broker",
+        fullName: 'Donald Barmakian',
+        officePhone: '(909) 945-4599',
+        mobilePhone: '(909) 223-0025',
+        emailAddress: 'donb@delmar1.com',
+        pictureName: 'donbarmakian.jpg',
+        specialization: 'Industrial/Investment',
+        position: 'Broker',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -121,12 +121,12 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Jack Ghazarian",
-        officePhone: "(909) 945-4588",
-        mobilePhone: "(714) 349-2765",
-        emailAddress: "jackg@delmar1.com",
-        pictureName: "jackghazarian.jpg",
-        specialization: "Retail/Investments",
+        fullName: 'Jack Ghazarian',
+        officePhone: '(909) 945-4588',
+        mobilePhone: '(714) 349-2765',
+        emailAddress: 'jackg@delmar1.com',
+        pictureName: 'jackghazarian.jpg',
+        specialization: 'Retail/Investments',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -144,12 +144,12 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Robert Jimenez",
-        officePhone: "(909) 945-4598",
-        mobilePhone: "(909) 238-9874",
-        emailAddress: "robertj@delmar1.com",
-        pictureName: "robertjimenez.jpg",
-        specialization: "Industrial/Investment",
+        fullName: 'Robert Jimenez',
+        officePhone: '(909) 945-4598',
+        mobilePhone: '(909) 238-9874',
+        emailAddress: 'robertj@delmar1.com',
+        pictureName: 'robertjimenez.jpg',
+        specialization: 'Industrial/Investment',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -167,12 +167,12 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "David McErlean",
-        officePhone: "(949) 370-5415",
-        mobilePhone: "(949) 370-5415",
-        emailAddress: "davem@delmar1.com",
-        pictureName: "davidmcerlean.jpg",
-        specialization: "Industrial/Investment",
+        fullName: 'David McErlean',
+        officePhone: '(949) 370-5415',
+        mobilePhone: '(949) 370-5415',
+        emailAddress: 'davem@delmar1.com',
+        pictureName: 'davidmcerlean.jpg',
+        specialization: 'Industrial/Investment',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -190,12 +190,12 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Mark McErlean",
-        officePhone: "(909) 945-4595",
-        mobilePhone: "(909) 214-9125",
-        emailAddress: "markm@delmar1.com",
-        pictureName: "markmcerlean.jpg",
-        specialization: "Industrial/Investment",
+        fullName: 'Mark McErlean',
+        officePhone: '(909) 945-4595',
+        mobilePhone: '(909) 214-9125',
+        emailAddress: 'markm@delmar1.com',
+        pictureName: 'markmcerlean.jpg',
+        specialization: 'Industrial/Investment',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
@@ -213,12 +213,12 @@ export class ContactComponent implements OnInit {
       },
 
       {
-        fullName: "Stephen Wheatley",
-        officePhone: "(909) 945-4589",
-        mobilePhone: "(909) 268-8171",
-        emailAddress: "stevew@delmar1.com",
-        pictureName: "stephenwheatley.jpg",
-        specialization: "Office/Land/Investment",
+        fullName: 'Stephen Wheatley',
+        officePhone: '(909) 945-4589',
+        mobilePhone: '(909) 268-8171',
+        emailAddress: 'stevew@delmar1.com',
+        pictureName: 'stephenwheatley.jpg',
+        specialization: 'Office/Land/Investment',
         blurb: `
           <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc

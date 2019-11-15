@@ -1,0 +1,303 @@
+import { Component, OnInit } from '@angular/core';
+
+export interface ColorSet {
+  primary_color: string;
+  primary_bg: string;
+  secondary_color: string;
+  secondary_bg: string;
+  info_color: string;
+  info_bg: string;
+  brand_color: string;
+  brand_bg: string;
+  navbar_color: string;
+  navbar_color_active: string;
+  navbar_bg: string;
+}
+
+@Component({
+  selector: 'app-color',
+  templateUrl: './color.component.html',
+  styleUrls: ['./color.component.css']
+})
+export class ColorComponent implements OnInit {
+  colorDialogVar: string;
+  colorDialogCancelValue: string;
+  startColorSet: ColorSet;
+
+  primaryColorVar: string;
+  primaryBgVar: string;
+  secondaryColorVar: string;
+  secondaryBgVar: string;
+  infoColorVar: string;
+  infoBgVar: string;
+  brandColorVar: string;
+  brandBgVar: string;
+  navbarColorVar: string;
+  navbarBgVar: string;
+  navbarColorActiveVar: string;
+
+  primaryColorValue: string;
+  primaryBgValue: string;
+  secondaryColorValue: string;
+  secondaryBgValue: string;
+  infoColorValue: string;
+  infoBgValue: string;
+  brandColorValue: string;
+  brandBgValue: string;
+  navbarColorValue: string;
+  navbarBgValue: string;
+  navbarColorActiveValue: string;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.colorDialogVar = '';
+    this.colorDialogCancelValue = 'FFFFFF';
+    export interface ColorSet {
+      primary_color: string;
+      primary_bg: string;
+      secondary_color: string;
+      secondary_bg: string;
+      info_color: string;
+      info_bg: string;
+      brand_color: string;
+      brand_bg: string;
+      navbar_color: string;
+      navbar_color_active: string;
+      navbar_bg: string;
+    }
+
+
+    --my - primary - color: #eeeee7;
+    --my - primary - bg: #0f3193;
+    --my - secondary - color: #eeeee7;
+    --my - secondary - bg: #2c2929;
+    --my - info - color: #09576e;
+    --my - info - bg: white;
+    --my - brand - color: blue;
+    --my - brand - bg: white;
+    --my - navbar - color: white;
+    --my - navbar - color - active: #868181;
+    --my - navbar - bg: #0f3193;
+
+
+    this.primaryColorVar = '--my-primary-color';
+    this.primaryBgVar = '--my-primary-bg';
+    this.secondaryColorVar = '--my-secondary-color';
+    this.secondaryBgVar = '--my-secondary-bg';
+    this.infoColorVar = '--my-info-color';
+    this.infoBgVar = '--my-info-bg';
+    this.brandColorVar = '--my-brand-color';
+    this.brandBgVar = '--my-brand-bg';
+    this.navbarColorVar = '--my-navbar-color';
+    this.navbarBgVar = '--my-navbar-bg';
+    this.navbarColorActiveVar = '--my-navbar-color-active';
+    this.initColorValues();
+
+    this.initColorValues();
+  }
+
+  setVarsFromColorSet(colors: ColorSet){
+    document.documentElement.style.setProperty('--my-primary-color', colors.primary_color);
+    document.documentElement.style.setProperty('--my-primary-bg', colors.primary_bg);
+    document.documentElement.style.setProperty('--my-secondary-color', colors.secondary_color);
+    document.documentElement.style.setProperty('--my-secondary-bg', colors.secondary_bg);
+    document.documentElement.style.setProperty('--my-info-color', colors.info_color);
+    document.documentElement.style.setProperty('--my-info-bg', colors.info_bg);
+    document.documentElement.style.setProperty('--my-brand-color', colors.brand_color);
+    document.documentElement.style.setProperty('--my-brand-bg', colors.brand_bg);
+
+    document.documentElement.style.setProperty('--my-navbar-color', colors.navbar_color);
+    document.documentElement.style.setProperty('--my-navbar-bg', colors.navbar_bg);
+    document.documentElement.style.setProperty('--my-navbar-color-active', colors.navbar_color_active);
+  }
+
+
+  initColorValues() {
+    this.primaryColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.primaryColorVar);
+    this.primaryBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.primaryBgVar);
+    this.secondaryColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.secondaryColorVar);
+    this.secondaryBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.secondaryBgVar);
+    this.infoColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.infoColorVar);
+    this.infoBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.infoBgVar);
+    this.brandColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.brandColorVar);
+    this.brandBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.brandBgVar);
+    this.navbarColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorVar);
+    this.navbarBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarBgVar);
+    this.navbarColorActiveValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorActiveVar);
+  }
+
+  cpOpenDialog(colorName: string) {
+    this.colorDialogVar = colorName;
+    this.colorDialogCancelValue = getComputedStyle(document.documentElement).getPropertyValue(this.colorDialogVar);
+    console.log(`Open dialog for color name: ${this.colorDialogVar} with color: ${this.colorDialogCancelValue}`);
+  }
+
+  cpCancelDialog() {
+    console.log(`Cancel dialog for: ${this.colorDialogVar} Revert to: ${this.colorDialogCancelValue}`);
+    document.documentElement.style.setProperty(this.colorDialogVar, this.colorDialogCancelValue);
+  }
+
+  cpCloseDialog() {
+    console.log(`Close dialog for: ${this.colorDialogVar}`);
+  }
+
+  cpChangeColor(e: any) {
+    console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
+    document.documentElement.style.setProperty(this.colorDialogVar, e);
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { Component, OnInit } from '@angular/core';
+
+export interface ColorSet {
+  fullName: string;
+  officePhone: string;
+  mobilePhone?: string;
+  emailAddress?: string;
+  pictureName?: string;
+  specialization?: string;
+  position?: string;
+  blurb?: string;
+}
+--my-primary-color: #eeeee7;
+--my-primary-bg: #0f3193;
+--my-secondary-color: #eeeee7;
+--my-secondary-bg: #2c2929;
+--my-info-color: #09576e;
+--my-info-bg: white;
+--my-brand-color: blue;
+--my-brand-bg: white;
+--my-navbar-color: white;
+--my-navbar-color-active: #868181;
+--my-navbar-bg: #0f3193;
+--my-fake-color: white;
+}
+
+
+@Component({
+  selector: 'app-color',
+  templateUrl: './color.component.html',
+  styleUrls: ['./color.component.css']
+})
+export class ColorComponent implements OnInit {
+  colorDialogVar: string;
+  colorDialogCancelValue: string;
+
+  primaryColorVar: string;
+  primaryBgVar: string;
+  secondaryColorVar: string;
+  secondaryBgVar: string;
+  infoColorVar: string;
+  infoBgVar: string;
+  brandColorVar: string;
+  brandBgVar: string;
+  navbarColorVar: string;
+  navbarBgVar: string;
+  navbarColorActiveVar: string;
+
+  primaryColorValue: string;
+  primaryBgValue: string;
+  secondaryColorValue: string;
+  secondaryBgValue: string;
+  infoColorValue: string;
+  infoBgValue: string;
+  brandColorValue: string;
+  brandBgValue: string;
+  navbarColorValue: string;
+  navbarBgValue: string;
+  navbarColorActiveValue: string;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.colorDialogVar = '';
+    this.colorDialogCancelValue = 'FFFFFF';
+
+    this.primaryColorVar = '--my-primary-color';
+    this.primaryBgVar = '--my-primary-bg';
+    this.secondaryColorVar = '--my-secondary-color';
+    this.secondaryBgVar = '--my-secondary-bg';
+    this.infoColorVar = '--my-info-color';
+    this.infoBgVar = '--my-info-bg';
+    this.brandColorVar = '--my-brand-color';
+    this.brandBgVar = '--my-brand-bg';
+    this.navbarColorVar = '--my-navbar-color';
+    this.navbarBgVar = '--my-navbar-bg';
+    this.navbarColorActiveVar = '--my-navbar-color-active';
+    this.initColorValues();
+    }
+
+  initColorValues() {
+    this.primaryColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.primaryColorVar);
+    this.primaryBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.primaryBgVar);
+    this.secondaryColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.secondaryColorVar);
+    this.secondaryBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.secondaryBgVar);
+    this.infoColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.infoColorVar);
+    this.infoBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.infoBgVar);
+    this.brandColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.brandColorVar);
+    this.brandBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.brandBgVar);
+    this.navbarColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorVar);
+    this.navbarBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarBgVar);
+    this.navbarColorActiveValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorActiveVar);
+  }
+
+  cpOpenDialog(colorName: string) {
+    this.colorDialogVar = colorName;
+    this.colorDialogCancelValue = getComputedStyle(document.documentElement).getPropertyValue(this.colorDialogVar);
+    console.log(`Open dialog for color name: ${this.colorDialogVar} with color: ${this.colorDialogCancelValue}`);
+  }
+
+  cpCancelDialog(){
+    console.log(`Cancel dialog for: ${this.colorDialogVar} Revert to: ${this.colorDialogCancelValue}`);
+    document.documentElement.style.setProperty(this.colorDialogVar, this.colorDialogCancelValue);
+  }
+
+  cpCloseDialog(){
+    console.log(`Close dialog for: ${this.colorDialogVar}`);
+  }
+
+  cpChangeColor(e: any) {
+    console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
+    document.documentElement.style.setProperty(this.colorDialogVar, e);
+
+  }
+
+}

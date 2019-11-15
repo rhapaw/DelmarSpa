@@ -1,64 +1,63 @@
 <div id="contact" class="container-fluid">
   <div class="row">
-    <div class="col-lg-7">
-      <div class="row my-secondary">
-        <div class="col block-center text-center">
+    <div class="col-lg-8">
+      <div class="row">
+        <!-- <div class="block-center text-center"> -->
+        <div class="col-lg-12 mypad my-secondary">
           <h1>CONTACT US</h1>
         </div>
       </div>
 
-      <div>
-        <!-- Start Office Address & Phone -->
+      <!-- Start Office Address & Phone -->
+      <div class="row one-contact my-primary mypad">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <p>Address and Phone Number</p>
+          <address>
+            10300 4th Street Suite 200<br />
+            Rancho Cucamonga, CA 91730<br />
+            Phone: (909) 989-8988<br />
+          </address>
+          <p>CA Dept of Real Estate Lic# 01225119</p>
+          <p>
+            I'll include an easy way to add, delete or modify the contact
+            information displayed below. Perhaps something as simple as a
+            spreadsheet that can be uploaded. Pictures. if used, will be
+            uploaded separately.
+          </p>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+      <br />
+      <!-- End Office Address & Phone -->
+
+      <!-- Start contacts loop -->
+      <div *ngFor="let contact of contacts">
         <div class="row one-contact my-primary">
-          <div class="col-lg-3"></div>
-          <div class="col-lg-6">
-            <p>Address and Phone Number</p>
-            <address>
-              10300 4th Street Suite 200<br />
-              Rancho Cucamonga, CA 91730<br />
-              Phone: (909) 989-8988<br />
-            </address>
-            <p>CA Dept of Real Estate Lic# 01225119</p>
+          <div class="col-lg-4">
+            <p *ngIf="contact.pictureName">
+              <img src="assets/staffpictures/{{ contact.pictureName }}" alt="Picture of  {{ contact.fullName }}"
+                class="contact-image img-responsive" />
+            </p>
+            <p class="contactname">{{ contact.fullName }}</p>
             <p>
-              I'll include an easy way to add, delete or modify the contact
-              information displayed below. Perhaps something as simple as a
-              spreadsheet that can be uploaded. Pictures. if used, will be
-              uploaded separately.
+              <span *ngIf="contact.position">Position: {{ contact.position }} <br />
+              </span>
+              <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
+            </p>
+            <p>
+              <span *ngIf="contact.officePhone">Office: {{ contact.officePhone }} <br /></span>
+              <span *ngIf="contact.mobilePhone">Mobile: {{ contact.mobilePhone }}</span>
+            </p>
+            <p *ngIf="contact.emailAddress">
+              <a href="mailto:{{ contact.emailAddress }}">E-Mail {{ contact.fullName }} at
+                {{ contact.emailAddress }}</a>
             </p>
           </div>
-          <div class="col-lg-3"></div>
+          <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
         </div>
-        <br />
-        <!-- End Office Address & Phone -->
-
-        <!-- Start contacts loop -->
-        <div *ngFor="let contact of contacts">
-          <div class="row one-contact my-primary">
-            <div class="col-lg-4">
-              <p *ngIf="contact.pictureName">
-                <img src="assets/staffpictures/{{ contact.pictureName }}" alt="Picture of  {{ contact.fullName }}"
-                  class="contact-image img-responsive" />
-              </p>
-              <p class="contactname">{{ contact.fullName }}</p>
-              <p>
-                <span *ngIf="contact.position">Position: {{ contact.position }} <br />
-                </span>
-                <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
-              </p>
-              <p>
-                <span *ngIf="contact.officePhone">Office: {{ contact.officePhone }} <br /></span>
-                <span *ngIf="contact.mobilePhone">Mobile: {{ contact.mobilePhone }}</span>
-              </p>
-              <p *ngIf="contact.emailAddress">
-                <a href="mailto:{{ contact.emailAddress }}">E-Mail {{ contact.fullName }} at
-                  {{ contact.emailAddress }}</a>
-              </p>
-            </div>
-            <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
-          </div>
-        </div>
-        <!-- End contacts loop -->
       </div>
+      <!-- End contacts loop -->
     </div>
   </div>
 </div>

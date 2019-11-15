@@ -53,7 +53,7 @@ h6 {
 }
 
 .mypad {
-  padding: 1.5em 1em 0 1em;
+  padding: 2.5em 1em 2em 1em !important;
 }
 
 .one-contact {
@@ -121,6 +121,7 @@ h6 {
 
 #footer {
   margin-top: 20px;
+  background-color: white;
 }
 
 .my-primary {
