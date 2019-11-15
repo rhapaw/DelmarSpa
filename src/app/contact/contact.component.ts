@@ -1,15 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export interface Contact {
-  fullName: string;
-  officePhone: string;
-  mobilePhone?: string;
-  emailAddress?: string;
-  pictureName?: string;
-  specialization?: string;
-  position?: string;
-  blurb?: string;
-}
+import { Contact } from '../.interfaces/Contact.interface'
 
 @Component({
   selector: 'app-contact',

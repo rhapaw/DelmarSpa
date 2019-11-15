@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import{ ColorSet } from '../.interfaces/ColorSet.interface'
+import { ColorSet } from '../.interfaces/ColorSet.interface'
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
@@ -60,19 +60,18 @@ export class ColorComponent implements OnInit {
     // Initialize the local vars from CSS vars
     this.setLocalVarsFromCssColorVars();
 
-
     this.colorSet = this.loadColorSet(this.colorSetName);
-
   }
 
   loadColorSet(colorSetName: string) : ColorSet {
-    let cs: ColorSet;
+    const cs = new ColorSet();
 
     //  For now we just build a colorset from the local vars and return it.
     // We assume that the local vars have already been set from the CSS vars.
     // Later we'll actually retrieve the colorset from a database.
 
     this.setColorSetFromLocalVars(cs);
+    // console.log('cs= ' + JSON.stringify(cs));
 
     // After we retrieve a colorset, we have to copy the values to the CSS vars
     // and the local color vars.
@@ -84,7 +83,7 @@ export class ColorComponent implements OnInit {
   }
 
   saveColorSet(colorSetName: string) {
-    let cs: ColorSet;
+    const cs = new ColorSet();
 
     this.setColorSetFromLocalVars(cs);
     // Save the colorset in a db using colorsetname;
@@ -107,16 +106,18 @@ export class ColorComponent implements OnInit {
 
   setColorSetFromLocalVars(colors: ColorSet) {
     colors.primary_color = this.primaryColorValue;
-    colors.primary_color = this.primaryBgValue;
-    colors.primary_color = this.secondaryColorValue;
-    colors.primary_color = this.secondaryBgValue;
-    colors.primary_color = this.infoColorValue;
-    colors.primary_color = this.infoBgValue;
-    colors.primary_color = this.brandColorValue;
-    colors.primary_color = this.brandBgValue;
-    colors.primary_color = this.navbarColorValue;
-    colors.primary_color = this.navbarBgValue;
-    colors.primary_color = this.navbarColorActiveValue;
+    colors.primary_bg = this.primaryBgValue;
+    colors.secondary_color = this.secondaryColorValue;
+    colors.secondary_bg = this.secondaryBgValue;
+    colors.info_color = this.infoColorValue;
+    colors.info_bg = this.infoBgValue;
+    colors.brand_color = this.brandColorValue;
+    colors.brand_bg = this.brandBgValue;
+    colors.navbar_color = this.navbarColorValue;
+    colors.navbar_bg = this.navbarBgValue;
+    colors.navbar_color_active = this.navbarColorActiveValue;
+
+    // console.log('colorset from locals' + JSON.stringify(colors));
   }
 
   setLocalVarsFromCssColorVars() {
@@ -131,25 +132,27 @@ export class ColorComponent implements OnInit {
     this.navbarColorValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorVar);
     this.navbarBgValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarBgVar);
     this.navbarColorActiveValue = getComputedStyle(document.documentElement).getPropertyValue(this.navbarColorActiveVar);
+
+    // console.log('Some loaded colors' + this.primaryColorValue + this.primaryBgValue + this.secondaryColorValue + this.secondaryBgValue + this.infoColorValue);
   }
 
   cpOpenDialog(colorName: string) {
     this.colorDialogVar = colorName;
     this.colorDialogCancelValue = getComputedStyle(document.documentElement).getPropertyValue(this.colorDialogVar);
-    console.log(`Open dialog for color name: ${this.colorDialogVar} with color: ${this.colorDialogCancelValue}`);
+    // console.log(`Open dialog for color name: ${this.colorDialogVar} with color: ${this.colorDialogCancelValue}`);
   }
 
   cpCancelDialog() {
-    console.log(`Cancel dialog for: ${this.colorDialogVar} Revert to: ${this.colorDialogCancelValue}`);
+    // console.log(`Cancel dialog for: ${this.colorDialogVar} Revert to: ${this.colorDialogCancelValue}`);
     document.documentElement.style.setProperty(this.colorDialogVar, this.colorDialogCancelValue);
   }
 
   cpCloseDialog() {
-    console.log(`Close dialog for: ${this.colorDialogVar}`);
+    // console.log(`Close dialog for: ${this.colorDialogVar}`);
   }
 
   cpChangeColor(e: any) {
-    console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
+    // console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
     document.documentElement.style.setProperty(this.colorDialogVar, e);
 
   }
