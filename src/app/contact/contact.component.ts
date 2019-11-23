@@ -17,10 +17,10 @@ export class ContactComponent implements OnInit {
     this.contacts = [
       {
         fullName: 'Adrian Young',
-        officePhone: '(909) 945-4586',
-        mobilePhone: '(909) 241-9500',
-        emailAddress: 'adrian@delmar1.com',
-        pictureName: 'adrianyoung.jpg',
+        phoneOffice: '(909) 945-4586',
+        phoneMobile: '(909) 241-9500',
+        email: 'adrian@delmar1.com',
+        photoUrl: 'adrianyoung.jpg',
         position: 'President',
         specialization: 'Office/Investment',
         blurb: `
@@ -33,14 +33,15 @@ export class ContactComponent implements OnInit {
     <p>
         During the past twenty years, Mr. Young has been named as a court-appointed receiver for over
         one hundred properties throughout California.
-    </p>`
+    </p>`,
+        isCollapsed: true
       },
 
       {
         fullName: 'Jim Cordova',
-        officePhone: '(909) 945-4594',
-        emailAddress: 'jimc@delmar1.com',
-        pictureName: 'jimcordova.jpg',
+        phoneOffice: '(909) 945-4594',
+        email: 'jimc@delmar1.com',
+        photoUrl: 'jimcordova.jpg',
         position: 'Controller',
         blurb: `
           <p>
@@ -55,27 +56,29 @@ export class ContactComponent implements OnInit {
           financial planning for Delmar Property Management. Delmar Property Management is currently
           using Windows 7 & 8, Microsoft Excel, Microsoft Word, and Microsoft Access and uses Spectra
           property management software.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Matt Young',
-        officePhone: '(909) 945-4590',
-        emailAddress: 'matty@delmar1.com',
-        pictureName: 'mattyoung.jpg',
+        phoneOffice: '(909) 945-4590',
+        email: 'matty@delmar1.com',
+        photoUrl: 'mattyoung.jpg',
         position: 'Asset Manager',
         blurb: `
           <p>
           Matt joined Delmar in 1995 as a property manager and graduated to the position of Controller in
           2002. Matt currently oversees Delmar’s investment division and is the head asset manager.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Quinn Young',
-        officePhone: '(909) 945-4594',
-        emailAddress: 'quinny@delmar1.com',
-        pictureName: 'quinnyoung.jpg',
+        phoneOffice: '(909) 945-4594',
+        email: 'quinny@delmar1.com',
+        photoUrl: 'quinnyoung.jpg',
         position: 'Property Manager',
         blurb: `
           <p>
@@ -84,15 +87,16 @@ export class ContactComponent implements OnInit {
           with various building and tenant issues. He supervises all recurring maintenance work. He assists in
           the budgeting process and then works to schedule and implement the work in a timely and
           professional manner.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Donald Barmakian',
-        officePhone: '(909) 945-4599',
-        mobilePhone: '(909) 223-0025',
-        emailAddress: 'donb@delmar1.com',
-        pictureName: 'donbarmakian.jpg',
+        phoneOffice: '(909) 945-4599',
+        phoneMobile: '(909) 223-0025',
+        email: 'donb@delmar1.com',
+        photoUrl: 'donbarmakian.jpg',
         specialization: 'Industrial/Investment',
         position: 'Broker',
         blurb: `
@@ -108,15 +112,16 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Jack Ghazarian',
-        officePhone: '(909) 945-4588',
-        mobilePhone: '(714) 349-2765',
-        emailAddress: 'jackg@delmar1.com',
-        pictureName: 'jackghazarian.jpg',
+        phoneOffice: '(909) 945-4588',
+        phoneMobile: '(714) 349-2765',
+        email: 'jackg@delmar1.com',
+        photoUrl: 'jackghazarian.jpg',
         specialization: 'Retail/Investments',
         blurb: `
           <p>
@@ -131,15 +136,16 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Robert Jimenez',
-        officePhone: '(909) 945-4598',
-        mobilePhone: '(909) 238-9874',
-        emailAddress: 'robertj@delmar1.com',
-        pictureName: 'robertjimenez.jpg',
+        phoneOffice: '(909) 945-4598',
+        phoneMobile: '(909) 238-9874',
+        email: 'robertj@delmar1.com',
+        photoUrl: 'robertjimenez.jpg',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -154,15 +160,16 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'David McErlean',
-        officePhone: '(949) 370-5415',
-        mobilePhone: '(949) 370-5415',
-        emailAddress: 'davem@delmar1.com',
-        pictureName: 'davidmcerlean.jpg',
+        phoneOffice: '(949) 370-5415',
+        phoneMobile: '(949) 370-5415',
+        email: 'davem@delmar1.com',
+        photoUrl: 'davidmcerlean.jpg',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -177,15 +184,16 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Mark McErlean',
-        officePhone: '(909) 945-4595',
-        mobilePhone: '(909) 214-9125',
-        emailAddress: 'markm@delmar1.com',
-        pictureName: 'markmcerlean.jpg',
+        phoneOffice: '(909) 945-4595',
+        phoneMobile: '(909) 214-9125',
+        email: 'markm@delmar1.com',
+        photoUrl: 'markmcerlean.jpg',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -200,15 +208,16 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       },
 
       {
         fullName: 'Stephen Wheatley',
-        officePhone: '(909) 945-4589',
-        mobilePhone: '(909) 268-8171',
-        emailAddress: 'stevew@delmar1.com',
-        pictureName: 'stephenwheatley.jpg',
+        phoneOffice: '(909) 945-4589',
+        phoneMobile: '(909) 268-8171',
+        email: 'stevew@delmar1.com',
+        photoUrl: 'stephenwheatley.jpg',
         specialization: 'Office/Land/Investment',
         blurb: `
           <p>
@@ -223,8 +232,14 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`
+          </p>`,
+          isCollapsed: true
       }
     ];
+
+    this.contacts.forEach( (x) =>
+    {
+      x.isCollapsed = true;
+    });
   }
 }
