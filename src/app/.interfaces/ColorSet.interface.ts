@@ -1,4 +1,4 @@
-export interface IColorSet {
+interface IColorSet {
   primary_color: string;
   primary_bg: string;
   secondary_color: string;

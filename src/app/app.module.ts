@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorComponent } from './color/color.component';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @NgModule({
    declarations: [
@@ -39,7 +40,8 @@ import { ColorComponent } from './color/color.component';
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       NgxNavbarModule,
-      ColorPickerModule
+      ColorPickerModule,
+      AccordionModule.forRoot()
    ],
    providers: [],
    bootstrap: [

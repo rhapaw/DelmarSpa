@@ -3,7 +3,8 @@
   --my-primary-color: #eeeee7;
   --my-primary-bg: #0f3193;
   --my-secondary-color: #eeeee7;
-  --my-secondary-bg: #2c2929;
+  --my-secondary-bg: #959595;
+  --my-secondary-bg2: #2c2929;
   --my-info-color: #09576e;
   --my-info-bg: white;
   --my-brand-color: blue;
@@ -29,6 +30,42 @@ h6 {
   text-align: center;
 }
 
+#home {
+  background-image: url("./assets/backgrounds/home.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+#contact {
+  background-image: url("./assets/backgrounds/contact.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+#links {
+  background-image: url("./assets/backgrounds/links.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+#receivership {
+  background-image: url("./assets/backgrounds/receivership.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+#management {
+  background-image: url("./assets/backgrounds/management.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+#commercial {
+  background-image: url("./assets/backgrounds/commercial.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
 .dcre-main-container {
   padding: 0 5% 0 5%;
 }
@@ -52,8 +89,32 @@ h6 {
   margin-right: auto;
 }
 
+.mytopmargin {
+  margin-top: 150px;
+}
+
 .mypad {
-  padding: 2.5em 1em 2em 1em !important;
+  padding: 1em;
+}
+
+.myrounded{
+  border-radius: 15px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.myclear {
+  background-color: red;
+  color: white;
+}
+
+.my-title-text {
+  color: var(--my-secondary-color);
+  background-color: var(--my-secondary-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
 }
 
 .one-contact {

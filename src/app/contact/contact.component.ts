@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Contact } from '../.interfaces/Contact.interface'
+import { Contact } from '../.interfaces/contact.interface';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
 
 @Component({
   selector: 'app-contact',

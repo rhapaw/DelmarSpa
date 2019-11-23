@@ -3,14 +3,14 @@
     <div class="col-lg-8">
       <div class="row">
         <!-- <div class="block-center text-center"> -->
-        <div class="col-lg-12 mypad my-secondary">
-          <h1>CONTACT US</h1>
+        <div class="col-lg-12 mypad my-secondary my-title-text">
+          <span>CONTACT US</span>
         </div>
       </div>
 
       <!-- Start Office Address & Phone -->
-      <div class="row one-contact my-primary mypad">
-        <div class="col-lg-3"></div>
+      <div class="row one-contact my-primary mypad justify-content-center">
+        <!-- <div class="col-lg-3"></div> -->
         <div class="col-lg-6">
           <p>Address and Phone Number</p>
           <address>
@@ -26,10 +26,42 @@
             uploaded separately.
           </p>
         </div>
-        <div class="col-lg-3"></div>
+        <!-- <div class="col-lg-3"></div> -->
       </div>
       <br />
       <!-- End Office Address & Phone -->
+
+      <!-- Start contacts loop -->
+      <div *ngFor="let contact of contacts">
+          <div class="row one-contact my-primary">
+            <div class="col-lg-4">
+              <p *ngIf="contact.pictureName">
+                <img src="assets/staffpictures/{{ contact.pictureName }}" alt="Picture of  {{ contact.fullName }}"
+                  class="contact-image img-responsive" />
+              </p>
+              <p class="contactname">{{ contact.fullName }}</p>
+              <p>
+                <span *ngIf="contact.position">Position: {{ contact.position }} <br />
+                </span>
+                <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
+              </p>
+              <p>
+                <span *ngIf="contact.officePhone">Office: {{ contact.officePhone }} <br /></span>
+                <span *ngIf="contact.mobilePhone">Mobile: {{ contact.mobilePhone }}</span>
+              </p>
+              <p *ngIf="contact.emailAddress">
+                <a href="mailto:{{ contact.emailAddress }}">E-Mail {{ contact.fullName }} at
+                  {{ contact.emailAddress }}</a>
+              </p>
+            </div>
+            <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
+          </div>
+        </div>
+        <!-- End contacts loop -->
+
+
+
+
 
       <!-- Start contacts loop -->
       <div *ngFor="let contact of contacts">
