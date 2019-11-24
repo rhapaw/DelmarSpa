@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:2.1
+N;LANGUAGE=en-us:McErlean;David
+FN:David McErlean
+ORG:Delmar Commercial Real Estate
+TEL;WORK;VOICE:(949) 370-5415
+TEL;CELL;VOICE:(949) 370-5415
+EMAIL;PREF;INTERNET:davem@delmar1.com
+URL;WORK:http://www.delmar1.com
+END:VCARD

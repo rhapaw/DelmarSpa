@@ -1,33 +1,30 @@
 <nav ngxNavbarDynamicExpand class="navbar navbar-expand-xl">
-    <a class="navbar-brand active" href="#">
-<div class="logo-image">
-    <img src="assets/logos/restlogo.jpg" class="img-fluid" >
-  </div>
+  <a class="navbar-brand active" href="#">
+    <div class="logo-image">
+      <img src="assets/logos/restlogo.jpg" class="img-fluid">
+    </div>
   </a>
-  <div class="my-navbar">
-   <button
-    class="navbar-toggler custom-toggler"
-    type="button"
-    (click)="collapse.toggle()"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toggle navigation" >
+  <div class="my-navbar w-100">
+    <button class="navbar-toggler navbar-toggler-right custom-toggler" type="button" (click)="collapse.toggle()"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 
-    <span class="navbar-toggler-icon d-flex align-items-center justify-content-center">
-      <i class="fas fa-bars text-white"> </i>
-    </span>
-  </button>
-  <ngx-navbar-collapse id="navbarNavDropdown" #collapse="ngxNavbarCollapse">
+      <span class="navbar-toggler-icon d-flex align-items-center justify-content-center">
+        <i class="fas fa-bars text-white"> </i>
+      </span>
+    </button>
+    <ngx-navbar-collapse id="navbarNavDropdown" #collapse="ngxNavbarCollapse">
 
-    <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/commercial']">Commercial Real Estate</a>
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/commercial']">Commercial Real
+            Estate</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/management']">Property Management</a>
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/management']">Property
+            Management</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/receivership']" >Receivership</a>
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/receivership']">Receivership</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/links']">Links</a>
@@ -36,13 +33,12 @@
           <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/contact']">Contact</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/about']">About</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/color']">Colors</a>
-            </li>
-            </ul>
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/about']">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="router-link-active" [routerLink]="['/color']">Colors</a>
+        </li>
+      </ul>
     </ngx-navbar-collapse>
   </div>
 </nav>
-

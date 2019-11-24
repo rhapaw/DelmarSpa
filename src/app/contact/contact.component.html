@@ -1,5 +1,6 @@
 <div id="contact" class="container-fluid">
-  <div class="row">
+    <div class="row"></div> <!-- the empty row is to prevent mytopmargin from pushing the background picture down -->
+    <div class="row mytopmargin justify-content-center">
     <div class="col-lg-8">
       <div class="row">
         <!-- <div class="block-center text-center"> -->
@@ -11,15 +12,18 @@
       <br>
 
       <!-- Start Office Address & Phone -->
-      <div class="row one-contact justify-content-center myrounded">
-        <div class="col-lg-4 my-primary mypad">
-          <p>Office Address and Phone Number</p>
+      <div class="row one-contact my-primary myrounded">
+        <div class="col-lg-5">
+          <p class="contactname">Office Address and Phone Number</p>
+          <p>Phone: (909) 989-8988 </p>
+        </div>
+        <div class="col-lg-5">
           <address>
             10300 4th Street Suite 200<br />
             Rancho Cucamonga, CA 91730<br />
-            Phone: (909) 989-8988<br />
           </address>
-          <p>CA Dept of Real Estate Lic# 01225119</p>
+        </div>
+        <div class="col-lg-2">
         </div>
       </div>
       <!-- End Office Address & Phone -->
@@ -28,74 +32,69 @@
 
       <!-- Start contacts loop -->
       <div *ngFor="let contact of contacts">
-        <div class="row one-contact my-primary">
+        <div class="row one-contact my-primary myrounded">
 
           <div class="col-lg-5">
-              <p class="contactname">{{ contact.fullName }}</p>
-              <span *ngIf="contact.position">Position: {{ contact.position }} <br />
-              </span>
-              <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
-            </div>
-          <div class="col-lg-5">
-              <p>
-                  <span *ngIf="contact.phoneOffice">Office: {{ contact.phoneOffice }} <br /></span>
-                  <span *ngIf="contact.phoneMobile">Mobile: {{ contact.phoneMobile }}</span>
-                </p>
-                <p *ngIf="contact.email">
-                  <a href="mailto:{{ contact.email }}">E-Mail {{ contact.fullName }} at
-                    {{ contact.email }}</a>
-                </p>
-              </div>
-          <div class="col-lg-2">
-            oops!
-          </div>
-          <div class="col-lg-4">
-          </div>
-          <div class="row">
-            <p *ngIf="contact.photoUrl">
-              <img src="assets/staffpictures/{{ contact.photoUrl }}" alt="Picture of  {{ contact.fullName }}"
-                class="contact-image img-responsive" />
-            </p>
-            <p>
-            </p>
-          </div>
-          <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
-        </div>
-        <br>
-      </div>
-      <!-- End contacts loop -->
-
-
-
-
-
-      <!-- Start contacts loop -->
-      <div *ngFor="let contact of contacts">
-        <div class="row one-contact my-primary">
-          <div class="col-lg-4">
-            <p *ngIf="contact.photoUrl">
-              <img src="assets/staffpictures/{{ contact.photoUrl }}" alt="Picture of  {{ contact.fullName }}"
-                class="contact-image img-responsive" />
-            </p>
             <p class="contactname">{{ contact.fullName }}</p>
-            <p>
-              <span *ngIf="contact.position">Position: {{ contact.position }} <br />
-              </span>
-              <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
-            </p>
+            <span *ngIf="contact.position">Position: {{ contact.position }} <br />
+            </span>
+            <span *ngIf="contact.specialization">Specializing in: {{ contact.specialization }}</span>
+          </div>
+          <div class="col-lg-5">
             <p>
               <span *ngIf="contact.phoneOffice">Office: {{ contact.phoneOffice }} <br /></span>
               <span *ngIf="contact.phoneMobile">Mobile: {{ contact.phoneMobile }}</span>
             </p>
             <p *ngIf="contact.email">
-              <a href="mailto:{{ contact.email }}">E-Mail {{ contact.fullName }} at
+              <a class="my-primary-color" href="mailto:{{ contact.email }}">E-Mail {{ contact.fullName }} at
                 {{ contact.email }}</a>
             </p>
           </div>
-          <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}"></div>
+          <div class="col-lg-2">
+            <a class="my-primary-color" href="assets/vcard/{{contact.firstName}}{{contact.lastName}}.vcf"
+              target="_blank">
+              Get Vcard
+            </a>
+            <br>
+            <button type="button" class="btn btn-link my-primary" (click)="contact.isCollapsed = !contact.isCollapsed"
+              [attr.aria-expanded]="!contact.isCollapsed" aria-controls="collapseContact">
+              <span *ngIf="contact.isCollapsed">More</span>
+              <span *ngIf="!contact.isCollapsed">Less</span>
+            </button>
+          </div>
+
+
+          <!--
+
+<button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
+</button>
+<hr>
+<div id="collapseBasic" [collapse]="isCollapsed">
+  <div class="well well-lg card card-block card-header">Some content</div>
+</div>
+
+
+-->
+          <div id="collapseContact" [collapse]="contact.isCollapsed">
+            <div class="row">
+              <div class="col-lg-4">
+                <p *ngIf="contact.photoUrl">
+                  <img src="assets/staffpictures/{{ contact.photoUrl }}" alt="Picture of  {{ contact.fullName }}"
+                    class="contact-image img-responsive" />
+                </p>
+              </div>
+              <div class="col-lg-8" *ngIf="contact.blurb" innerHtml="{{ contact.blurb }}">
+
+              </div>
+            </div>
+          </div>
         </div>
+        <br>
       </div>
+
       <!-- End contacts loop -->
+
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 interface IContact {
   id?: number;
-  firstname?: string;
-  lastname?: string;
+  firstName: string;
+  lastName: string;
   fullName?: string;
   phoneOffice?: string;
   phoneMobile?: string;
@@ -18,9 +18,9 @@ interface IContact {
 
 export class Contact implements IContact {
   id?: number;
-  firstname?: string;
-  lastname?: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
+  fullName?: string;
   phoneOffice?: string;
   phoneMobile?: string;
   email?: string;

@@ -66,6 +66,13 @@ h6 {
   min-height: 900px;
 }
 
+#about {
+  background-image: url("./assets/backgrounds/about.jpg");
+  background-size: cover;
+  min-height: 900px;
+}
+
+
 .dcre-main-container {
   padding: 0 5% 0 5%;
 }
@@ -185,6 +192,22 @@ h6 {
   background-color: white;
 }
 
+.my-primary-color {
+  color: var(--my-primary-color);
+}
+
+.my-primary-bg {
+  background: var(--my-primary-bg);
+}
+
+.my-primary-color-as-bg {
+  background: var(--my-primary-color);
+}
+
+.my-primary-bg-as-color {
+  color: var(--my-primary-bg);
+}
+
 .my-primary {
   color: var(--my-primary-color);
   background: var(--my-primary-bg);
@@ -197,6 +220,27 @@ h6 {
   background: var(--my-primary-bg);
 }
 
+.my-primary-inverted {
+  color: var(--my-primary-bg);
+  background: var(--my-primary-color);
+}
+
+.my-secondary-color {
+  color: var(--my-secondary-color);
+}
+
+.my-secondary-bg {
+  background: var(--my-secondary-bg);
+}
+
+.my-secondary-color-as-bg {
+  background: var(--my-secondary-color);
+}
+
+.my-secondary-bg-as-color {
+  color: var(--my-secondary-bg);
+}
+
 .my-secondary {
   color: var(--my-secondary-color);
   background: var(--my-secondary-bg);
@@ -204,9 +248,40 @@ h6 {
   padding-bottom: 20px;
 }
 
+.my-secondary-no-pad {
+  color: var(--my-secondary-color);
+  background: var(--my-secondary-bg);
+}
+
+.my-secondary-inverted {
+  background: var(--my-secondary-color);
+  color: var(--my-secondary-bg);
+}
+
 .my-info {
   color: var(--my-info-color);
   background: var(--my-info-bg);
+}
+
+.my-info-inverted {
+  color: var(--my-info-bg);
+  background: var(--my-info-color);
+}
+
+.my-info-color {
+  color: var(--my-info-color);
+}
+
+.my-info-bg {
+  background: var(--my-info-bg);
+}
+
+.my-info-color-as-bg {
+  background: var(--my-info-color);
+}
+
+.my-info-bg-as-color {
+  color: var(--my-info-bg);
 }
 
 

@@ -38,7 +38,7 @@
         </div>
         <div class="col-lg-8 my-colorpage-primary">
           <p><input [(colorPicker)]="secondaryColorValue" [style.background]="secondaryColorValue"
-              [cpOutputFormat]="hex" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryColorVar)"
+              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -50,11 +50,16 @@
             [{{secondaryBgValue}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="secondaryBgValue" [style.background]="secondaryBgValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="secondaryBgValue" [style.background]="secondaryBgValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
+          <p>
+              <button type="button" class="btn my-colorpage-secondary" (click)="killSecondaryBg()" >
+                  No background (transparent)
+              </button>
+           </p>
         </div>
       </div>
 
@@ -67,7 +72,7 @@
             [{{primaryColorValue}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="primaryColorValue" [style.background]="primaryColorValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="primaryColorValue" [style.background]="primaryColorValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
@@ -80,12 +85,17 @@
             [{{primaryBgValue}}]</p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="primaryBgValue" [style.background]="primaryBgValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="primaryBgValue" [style.background]="primaryBgValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
-        </div>
+          <p>
+              <button type="button" class="btn my-colorpage-secondary" (click)="killPrimaryBg()" >
+                  No background (transparent)
+              </button>
+              </p>
+       </div>
       </div>
     </div>
   </div>
@@ -111,25 +121,11 @@
       </h3>
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
-          <p>Background color<br>
-            [{{navbarBgValue}}] </p>
-        </div>
-        <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="hex"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
-              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
-              (colorPickerClose)="cpCloseDialog()" />
-          </p>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4 my-colorpage-primary">
           <p>Normal item color<br>
             [{{navbarColorValue}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="navbarColorValue" [style.background]="navbarColorValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="navbarColorValue" [style.background]="navbarColorValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
@@ -144,14 +140,33 @@
         </div>
         <div class="col-lg-8 my-colorpage-primary">
           <p><input [(colorPicker)]="navbarColorActiveValue" [style.background]="navbarColorActiveValue"
-              [cpOutputFormat]="hex" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorActiveVar)"
+              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorActiveVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
         </div>
       </div>
 
-    </div>
+      <div class="row">
+          <div class="col-lg-4 my-colorpage-primary">
+            <p>Background color<br>
+              [{{navbarBgValue}}] </p>
+          </div>
+          <div class="col-lg-8 my-colorpage-primary">
+            <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="'hex'"
+                [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
+                (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+                (colorPickerClose)="cpCloseDialog()" />
+            </p>
+            <p>
+                <button type="button" class="btn my-colorpage-secondary" (click)="killNavbarBg()" >
+                    No background (transparent)
+                </button>
+                </p>
+          </div>
+        </div>
+
+      </div>
   </div>
 
   <div class="row">
@@ -181,7 +196,7 @@
             [{{infoColorValue}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="infoColorValue" [style.background]="infoColorValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="infoColorValue" [style.background]="infoColorValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
@@ -194,7 +209,7 @@
             [{{infoBgValue}}]</p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="infoBgValue" [style.background]="infoBgValue" [cpOutputFormat]="hex"
+          <p><input [(colorPicker)]="infoBgValue" [style.background]="infoBgValue" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
@@ -210,11 +225,11 @@
       </div>
     </div>
 
-  <div class="row mb-3">
+<!--   <div class="row mb-3">
     <div class="row mypad">
       other stuff goes here
     </div>
-  </div>
+  </div> -->
 
 
 </div>

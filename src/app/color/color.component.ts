@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColorSet } from '../.interfaces/colorset.interface'
+
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
@@ -10,6 +11,9 @@ export class ColorComponent implements OnInit {
   colorDialogCancelValue: string;
   colorSetName: string;
   colorSet: ColorSet;
+  primaryBgIsNone = false;
+  secondaryBgIsNone = false;
+  navbarBgIsNone = false;
 
   // Vars used to hold names of CSS vars
   primaryColorVar: string;
@@ -149,12 +153,34 @@ export class ColorComponent implements OnInit {
 
   cpCloseDialog() {
     // console.log(`Close dialog for: ${this.colorDialogVar}`);
+    // The color var is already set. There's nothing we need to do.
+    // if (this.colorDialogVar === this.secondaryBgVar) {
+      // this.secondaryBgValue = 'none';
+      // document.documentElement.style.setProperty(this.colorDialogVar, 'none');
+    // }
   }
 
   cpChangeColor(e: any) {
     // console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
     document.documentElement.style.setProperty(this.colorDialogVar, e);
+  }
 
+  killSecondaryBg() {
+    document.documentElement.style.setProperty(this.secondaryBgVar, 'none');
+    this.secondaryBgValue = 'none';
+    // console.log('kill secondary bg');
+  }
+
+  killPrimaryBg() {
+    document.documentElement.style.setProperty(this.primaryBgVar, 'none');
+    this.primaryBgValue = 'none';
+    console.log('kill primary bg');
+  }
+
+  killNavbarBg() {
+    document.documentElement.style.setProperty(this.navbarBgVar, 'none');
+    this.navbarBgValue = 'none';
+    console.log('kill navbar bg');
   }
 
 }

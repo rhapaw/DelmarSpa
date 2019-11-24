@@ -16,7 +16,8 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     this.contacts = [
       {
-        fullName: 'Adrian Young',
+        firstName: 'Adrian',
+        lastName: 'Young',
         phoneOffice: '(909) 945-4586',
         phoneMobile: '(909) 241-9500',
         email: 'adrian@delmar1.com',
@@ -33,12 +34,12 @@ export class ContactComponent implements OnInit {
     <p>
         During the past twenty years, Mr. Young has been named as a court-appointed receiver for over
         one hundred properties throughout California.
-    </p>`,
-        isCollapsed: true
+    </p>`
       },
 
       {
-        fullName: 'Jim Cordova',
+        firstName: 'Jim',
+        lastName: 'Cordova',
         phoneOffice: '(909) 945-4594',
         email: 'jimc@delmar1.com',
         photoUrl: 'jimcordova.jpg',
@@ -56,12 +57,12 @@ export class ContactComponent implements OnInit {
           financial planning for Delmar Property Management. Delmar Property Management is currently
           using Windows 7 & 8, Microsoft Excel, Microsoft Word, and Microsoft Access and uses Spectra
           property management software.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Matt Young',
+        firstName: 'Matt',
+        lastName: 'Young',
         phoneOffice: '(909) 945-4590',
         email: 'matty@delmar1.com',
         photoUrl: 'mattyoung.jpg',
@@ -70,12 +71,12 @@ export class ContactComponent implements OnInit {
           <p>
           Matt joined Delmar in 1995 as a property manager and graduated to the position of Controller in
           2002. Matt currently oversees Delmar’s investment division and is the head asset manager.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Quinn Young',
+        firstName: 'Quinn',
+        lastName: 'Young',
         phoneOffice: '(909) 945-4594',
         email: 'quinny@delmar1.com',
         photoUrl: 'quinnyoung.jpg',
@@ -87,12 +88,12 @@ export class ContactComponent implements OnInit {
           with various building and tenant issues. He supervises all recurring maintenance work. He assists in
           the budgeting process and then works to schedule and implement the work in a timely and
           professional manner.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Donald Barmakian',
+        firstName: 'Donald',
+        lastName: 'Barmakian',
         phoneOffice: '(909) 945-4599',
         phoneMobile: '(909) 223-0025',
         email: 'donb@delmar1.com',
@@ -112,16 +113,17 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Jack Ghazarian',
+        firstName: 'Jack',
+        lastName: 'Ghazarian',
         phoneOffice: '(909) 945-4588',
         phoneMobile: '(714) 349-2765',
         email: 'jackg@delmar1.com',
         photoUrl: 'jackghazarian.jpg',
+        position: 'Broker',
         specialization: 'Retail/Investments',
         blurb: `
           <p>
@@ -136,16 +138,17 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Robert Jimenez',
+        firstName: 'Robert',
+        lastName: 'Jimenez',
         phoneOffice: '(909) 945-4598',
         phoneMobile: '(909) 238-9874',
         email: 'robertj@delmar1.com',
         photoUrl: 'robertjimenez.jpg',
+        position: 'Broker',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -160,16 +163,17 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'David McErlean',
+        firstName: 'David',
+        lastName: 'McErlean',
         phoneOffice: '(949) 370-5415',
         phoneMobile: '(949) 370-5415',
         email: 'davem@delmar1.com',
         photoUrl: 'davidmcerlean.jpg',
+        position: 'Broker',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -184,16 +188,17 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Mark McErlean',
+        firstName: 'Mark',
+        lastName: 'McErlean',
         phoneOffice: '(909) 945-4595',
         phoneMobile: '(909) 214-9125',
         email: 'markm@delmar1.com',
         photoUrl: 'markmcerlean.jpg',
+        position: 'Broker',
         specialization: 'Industrial/Investment',
         blurb: `
           <p>
@@ -208,16 +213,17 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       },
 
       {
-        fullName: 'Stephen Wheatley',
+        firstName: 'Stephen',
+        lastName: 'Wheatley',
         phoneOffice: '(909) 945-4589',
         phoneMobile: '(909) 268-8171',
         email: 'stevew@delmar1.com',
         photoUrl: 'stephenwheatley.jpg',
+        position: 'Broker',
         specialization: 'Office/Land/Investment',
         blurb: `
           <p>
@@ -232,14 +238,15 @@ export class ContactComponent implements OnInit {
           et dapibus ipsum. Nulla viverra nisi a lorem bibendum aliquet.
           Suspendisse potenti. Ut nulla odio, imperdiet at odio a, euismod
           faucibus est.
-          </p>`,
-          isCollapsed: true
+          </p>`
       }
     ];
 
     this.contacts.forEach( (x) =>
     {
       x.isCollapsed = true;
+      x.fullName = `${x.firstName} ${x.lastName}`;
     });
   }
+
 }

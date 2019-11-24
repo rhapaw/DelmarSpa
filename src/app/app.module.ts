@@ -19,6 +19,8 @@ import { NgxNavbarModule } from 'ngx-bootstrap-navbar';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ColorComponent } from './color/color.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @NgModule({
    declarations: [
@@ -41,7 +43,9 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
       BrowserAnimationsModule,
       NgxNavbarModule,
       ColorPickerModule,
-      AccordionModule.forRoot()
+      AccordionModule.forRoot(),
+      CollapseModule.forRoot(),
+      ButtonsModule.forRoot()
    ],
    providers: [],
    bootstrap: [
