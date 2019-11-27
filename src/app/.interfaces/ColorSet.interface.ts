@@ -1,4 +1,4 @@
-interface IColorSet {
+/* interface IColorSet {
   primary_color: string;
   primary_bg: string;
   secondary_color: string;
@@ -11,8 +11,8 @@ interface IColorSet {
   navbar_color_active: string;
   navbar_bg: string;
 }
-
-export class ColorSet implements IColorSet {
+ */
+export class ColorSet {
   primary_color: string;
   primary_bg: string;
   secondary_color: string;

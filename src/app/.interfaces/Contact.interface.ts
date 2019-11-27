@@ -1,4 +1,4 @@
-interface IContact {
+/* interface IContact {
   id?: number;
   firstName: string;
   lastName: string;
@@ -15,8 +15,8 @@ interface IContact {
   updatedAt?: Date;
   version?: number;
   }
-
-export class Contact implements IContact {
+ */
+export class Contact {
   id?: number;
   firstName: string;
   lastName: string;
