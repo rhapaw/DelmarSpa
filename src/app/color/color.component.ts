@@ -95,31 +95,31 @@ export class ColorComponent implements OnInit {
 
   setCssColorVarsFromColorSet(colors: ColorSet){
 
-    document.documentElement.style.setProperty(this.primaryColorVar, colors.primary_color);
-    document.documentElement.style.setProperty(this.primaryBgVar, colors.primary_bg);
-    document.documentElement.style.setProperty(this.secondaryColorVar, colors.secondary_color);
-    document.documentElement.style.setProperty(this.secondaryBgVar, colors.secondary_bg);
-    document.documentElement.style.setProperty(this.infoColorVar, colors.info_color);
-    document.documentElement.style.setProperty(this.infoBgVar, colors.info_bg);
-    document.documentElement.style.setProperty(this.brandColorVar, colors.brand_color);
-    document.documentElement.style.setProperty(this.brandBgVar, colors.brand_bg);
-    document.documentElement.style.setProperty(this.navbarColorVar, colors.navbar_color);
-    document.documentElement.style.setProperty(this.navbarBgVar, colors.navbar_bg);
-    document.documentElement.style.setProperty(this.navbarColorActiveVar, colors.navbar_color_active);
+    document.documentElement.style.setProperty(this.primaryColorVar, colors.primaryColor);
+    document.documentElement.style.setProperty(this.primaryBgVar, colors.primaryBg);
+    document.documentElement.style.setProperty(this.secondaryColorVar, colors.secondaryColor);
+    document.documentElement.style.setProperty(this.secondaryBgVar, colors.secondaryBg);
+    document.documentElement.style.setProperty(this.infoColorVar, colors.infoColor);
+    document.documentElement.style.setProperty(this.infoBgVar, colors.infoBg);
+    document.documentElement.style.setProperty(this.brandColorVar, colors.brandColor);
+    document.documentElement.style.setProperty(this.brandBgVar, colors.brandBg);
+    document.documentElement.style.setProperty(this.navbarColorVar, colors.navbarColor);
+    document.documentElement.style.setProperty(this.navbarBgVar, colors.navbarBg);
+    document.documentElement.style.setProperty(this.navbarColorActiveVar, colors.navbarColorActive);
   }
 
   setColorSetFromLocalVars(colors: ColorSet) {
-    colors.primary_color = this.primaryColorValue;
-    colors.primary_bg = this.primaryBgValue;
-    colors.secondary_color = this.secondaryColorValue;
-    colors.secondary_bg = this.secondaryBgValue;
-    colors.info_color = this.infoColorValue;
-    colors.info_bg = this.infoBgValue;
-    colors.brand_color = this.brandColorValue;
-    colors.brand_bg = this.brandBgValue;
-    colors.navbar_color = this.navbarColorValue;
-    colors.navbar_bg = this.navbarBgValue;
-    colors.navbar_color_active = this.navbarColorActiveValue;
+    colors.primaryColor = this.primaryColorValue;
+    colors.primaryBg = this.primaryBgValue;
+    colors.secondaryColor = this.secondaryColorValue;
+    colors.secondaryBg = this.secondaryBgValue;
+    colors.infoColor = this.infoColorValue;
+    colors.infoBg = this.infoBgValue;
+    colors.brandColor = this.brandColorValue;
+    colors.brandBg = this.brandBgValue;
+    colors.navbarColor = this.navbarColorValue;
+    colors.navbarBg = this.navbarBgValue;
+    colors.navbarColorActive = this.navbarColorActiveValue;
 
     // console.log('colorset from locals' + JSON.stringify(colors));
   }
