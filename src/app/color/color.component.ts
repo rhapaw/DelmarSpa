@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColorSet } from '../_models/colorset'
+import { Colorset } from '../_models/colorset'
 
 @Component({
   selector: 'app-color',
@@ -9,8 +9,8 @@ import { ColorSet } from '../_models/colorset'
 export class ColorComponent implements OnInit {
   colorDialogVar: string;
   colorDialogCancelValue: string;
-  colorSetName: string;
-  colorSet: ColorSet;
+  colorsetName: string;
+  colorset: Colorset;
   primaryBgIsNone = false;
   secondaryBgIsNone = false;
   navbarBgIsNone = false;
@@ -46,7 +46,7 @@ export class ColorComponent implements OnInit {
   ngOnInit() {
     this.colorDialogVar = '';
     this.colorDialogCancelValue = 'FFFFFF';
-    this.colorSetName = 'Default';
+    this.colorsetName = 'Default';
 
     // Set the names used by the CSS color vars
     this.primaryColorVar = '--my-primary-color';
@@ -64,11 +64,11 @@ export class ColorComponent implements OnInit {
     // Initialize the local vars from CSS vars
     this.setLocalVarsFromCssColorVars();
 
-    this.colorSet = this.loadColorSet(this.colorSetName);
+    this.colorset = this.loadColorSet(this.colorsetName);
   }
 
-  loadColorSet(colorSetName: string) : ColorSet {
-    const cs = new ColorSet();
+  loadColorSet(colorsetName: string) : Colorset {
+    const cs = new Colorset();
 
     //  For now we just build a colorset from the local vars and return it.
     // We assume that the local vars have already been set from the CSS vars.
@@ -86,14 +86,14 @@ export class ColorComponent implements OnInit {
     return cs;
   }
 
-  saveColorSet(colorSetName: string) {
-    const cs = new ColorSet();
+  saveColorSet(colorsetName: string) {
+    const cs = new Colorset();
 
     this.setColorSetFromLocalVars(cs);
     // Save the colorset in a db using colorsetname;
   }
 
-  setCssColorVarsFromColorSet(colors: ColorSet){
+  setCssColorVarsFromColorSet(colors: Colorset){
 
     document.documentElement.style.setProperty(this.primaryColorVar, colors.primaryColor);
     document.documentElement.style.setProperty(this.primaryBgVar, colors.primaryBg);
@@ -108,7 +108,7 @@ export class ColorComponent implements OnInit {
     document.documentElement.style.setProperty(this.navbarColorActiveVar, colors.navbarColorActive);
   }
 
-  setColorSetFromLocalVars(colors: ColorSet) {
+  setColorSetFromLocalVars(colors: Colorset) {
     colors.primaryColor = this.primaryColorValue;
     colors.primaryBg = this.primaryBgValue;
     colors.secondaryColor = this.secondaryColorValue;

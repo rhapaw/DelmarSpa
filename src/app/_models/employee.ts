@@ -1,4 +1,4 @@
-export interface Contact {
+export interface Employee {
   id?: number;
   firstName: string;
   lastName: string;
@@ -15,4 +15,5 @@ export interface Contact {
   updatedAt?: Date;
   version?: number;
 }
+
 

@@ -21,6 +21,17 @@ import { ColorComponent } from './color/color.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { AlertifyService } from './_services/alertify.service';
+import { AuthService } from './_services/auth.service';
+import { ColorsetService } from './_services/colorset.service';
+import { EmployeeService } from './_services/employee.service';
+import { PropertyService } from './_services/property.service';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -45,9 +56,23 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
       ColorPickerModule,
       AccordionModule.forRoot(),
       CollapseModule.forRoot(),
-      ButtonsModule.forRoot()
+      ButtonsModule.forRoot(),
+      HttpClientModule,
+      JwtModule.forRoot({
+        config: {
+          tokenGetter,
+          whitelistedDomains: ['localhost:5000'],
+          blacklistedRoutes: ['localhost:5000/api/auth']
+        }
+      }),
    ],
-   providers: [],
+   providers: [
+    AlertifyService,
+    AuthService,
+    ColorsetService,
+    EmployeeService,
+    PropertyService
+   ],
    bootstrap: [
       AppComponent
    ]
