@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Employee } from '../_models/employee';
 import { PaginatedResult } from '../_models/pagination';
 import { map } from 'rxjs/internal/operators';
+import { Contact } from '../_models/contact';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,10 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  getEmployees(page?, itemsPerPage?, propertyParams?): Observable<PaginatedResult<Employee[]>>
+  getContacts(page?, itemsPerPage?, propertyParams?): Observable<PaginatedResult<Contact[]>>
   {
-    const paginatedResult: PaginatedResult<Employee[]> = new PaginatedResult<Employee[]>();
+    console.log('getContacts');
+    const paginatedResult: PaginatedResult<Contact[]> = new PaginatedResult<Contact[]>();
 
     let params = new HttpParams();
 
@@ -25,19 +27,12 @@ export class EmployeeService {
       params = params.append('pageSize', itemsPerPage);
     }
 
-    if (propertyParams != null) {
-      params = params.append('minAge', propertyParams.minAge);
-      params = params.append('maxAge', propertyParams.maxAge);
-      params = params.append('gender', propertyParams.gender);
-      params = params.append('orderBy', propertyParams.orderBy);
-      // console.log('InGetUsers', userParams.minAge, userParams.maxAge, userParams.gender, params );
-    }
-
     return this.http
-    .get<Employee[]>(this.baseUrl + 'employee', { observe: 'response', params })
+    .get<Contact[]>(this.baseUrl + 'contact', { observe: 'response', params })
     .pipe(
       map(response =>
         {
+          console.log('Contacts: ', response.body);
           paginatedResult.result = response.body;
           if (response.headers.get('Pagination') != null) {
             paginatedResult.pagination = JSON.parse(
@@ -49,7 +44,42 @@ export class EmployeeService {
     );
   }
 
-  getProperty(id): Observable<Employee> {
+    getEmployees(page?, itemsPerPage?, propertyParams?): Observable<PaginatedResult<Employee[]>>
+    {
+      const paginatedResult: PaginatedResult<Employee[]> = new PaginatedResult<Employee[]>();
+
+      let params = new HttpParams();
+
+      if (page != null && itemsPerPage != null) {
+        params = params.append('pageNumber', page);
+        params = params.append('pageSize', itemsPerPage);
+      }
+
+      if (propertyParams != null) {
+        params = params.append('minAge', propertyParams.minAge);
+        params = params.append('maxAge', propertyParams.maxAge);
+        params = params.append('gender', propertyParams.gender);
+        params = params.append('orderBy', propertyParams.orderBy);
+        // console.log('InGetUsers', userParams.minAge, userParams.maxAge, userParams.gender, params );
+      }
+
+      return this.http
+      .get<Employee[]>(this.baseUrl + 'employee', { observe: 'response', params })
+      .pipe(
+        map(response =>
+          {
+            paginatedResult.result = response.body;
+            if (response.headers.get('Pagination') != null) {
+              paginatedResult.pagination = JSON.parse(
+                response.headers.get('Pagination'));
+            }
+            return paginatedResult;
+          }
+        )
+      );
+    }
+
+    getProperty(id): Observable<Employee> {
     return this.http.get<Employee>(this.baseUrl + 'employee/' + id);
   }
 

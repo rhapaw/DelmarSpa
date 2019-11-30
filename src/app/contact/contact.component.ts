@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Contact } from '../_models/contact';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { EmployeeService } from '../_services/employee.service';
+import { PaginatedResult, Pagination } from '../_models/pagination';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact',
@@ -10,11 +13,38 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 export class ContactComponent implements OnInit {
   contacts: Contact[];
   aContact: Contact;
+  tContacts: Contact[];
+  tPagination: Pagination;
 
-  constructor() {}
+  constructor(private empSvc: EmployeeService) {}
 
   ngOnInit() {
-    this.contacts = [
+
+      this.empSvc.getContacts()
+      .subscribe( (pres: PaginatedResult<Contact[]>) =>
+      {
+        console.log('Into subscribe');
+        this.tContacts = pres.result;
+        this.tPagination = pres.pagination;
+        console.log('Contacts after call: ');
+        console.log(this.tContacts);
+        this.contacts = pres.result;
+        this.contacts.forEach( (x) =>
+        {
+          x.isCollapsed = true;
+          x.fullName = `${x.firstName} ${x.lastName}`;
+        });
+
+      }
+      , (error) =>
+      {
+        console.log('Into subscribe error');
+        console.log(error);
+      }
+      );
+
+
+    this.tContacts = [
       {
         firstName: 'Adrian',
         lastName: 'Young',
@@ -242,11 +272,6 @@ export class ContactComponent implements OnInit {
       }
     ];
 
-    this.contacts.forEach( (x) =>
-    {
-      x.isCollapsed = true;
-      x.fullName = `${x.firstName} ${x.lastName}`;
-    });
   }
 
 }
