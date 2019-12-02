@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Colorset } from '../_models/colorset';
+import { PaginatedResult } from '../_models/pagination';
 import { ColorsetService } from '../_services/colorset.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Observable, of } from 'rxjs';
@@ -20,7 +21,7 @@ export class ColorsetListResolver implements Resolve<Colorset[]> {
   resolve(route: ActivatedRouteSnapshot): Observable<Colorset[]> {
     return this.colorsetService.getColorsets(this.pageNumber, this.pageSize).pipe(
       catchError(error => {
-        this.alertify.error('Problem retrieving data');
+        this.alertify.error('Problem retrieving colorsets');
         this.router.navigate(['/home']);
         return of(null);
       })

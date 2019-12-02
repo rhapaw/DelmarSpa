@@ -19,9 +19,13 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
- /*    this.route.data.subscribe(data => {
-      this.colorset = data['colorset'];
-    }); */
+    this.route.data.subscribe(data => {
+      console.log('Data: ', data);
+      const csa: any[] = data['users'];
+      console.log('csa: ', csa);
+      this.colorset = csa[0];
+      console.log('Colorset: ', this.colorset);
+    });
   }
 
 }

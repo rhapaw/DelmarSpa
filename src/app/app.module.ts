@@ -28,6 +28,9 @@ import { EmployeeService } from './_services/employee.service';
 import { PropertyService } from './_services/property.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { ColorsetListResolver } from './_resolvers/colorset-list.resolver';
+import { ColorsetDetailResolver } from './_resolvers/colorset-detail.resolver';
+import { ColorsetDefaultResolver } from './_resolvers/colorset-default.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -71,8 +74,11 @@ export function tokenGetter() {
     AuthService,
     ColorsetService,
     EmployeeService,
-    PropertyService
-   ],
+    PropertyService,
+    ColorsetListResolver,
+    ColorsetDetailResolver,
+    ColorsetDefaultResolver
+    ],
    bootstrap: [
       AppComponent
    ]

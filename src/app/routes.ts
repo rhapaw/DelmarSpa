@@ -11,7 +11,7 @@ import { ColorsetDefaultResolver } from './_resolvers/colorset-default.resolver'
 
 export const
 appRoutes: Routes = [
-  { path: '', component: HomeComponent}, //, resolve: { users: ColorsetDefaultResolver } },
+  { path: '', component: HomeComponent, resolve: { users: ColorsetDefaultResolver } },
   // { path: 'about', component: AboutComponent, resolve: { users: AboutResolver },
   { path: 'about', component: AboutComponent},
   { path: 'commercial', component: CommercialComponent},

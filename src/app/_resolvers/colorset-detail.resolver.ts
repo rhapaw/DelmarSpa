@@ -20,8 +20,8 @@ export class ColorsetDetailResolver implements Resolve<Colorset> {
   resolve(route: ActivatedRouteSnapshot): Observable<Colorset> {
     return this.colorsetService.getColorset(route.params['id']).pipe(
       catchError(error => {
-        this.alertify.error('Problem retrieving data');
-        this.router.navigate(['/home']);
+        this.alertify.error('Problem retrieving colorset with id: ' + route.params['id']);
+        // this.router.navigate(['/home']);
         return of(null);
       })
     );
