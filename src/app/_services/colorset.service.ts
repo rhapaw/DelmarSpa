@@ -50,12 +50,20 @@ export class ColorsetService
     );
   }
 
+  getDefaultColorset(): Observable<Colorset> {
+    return this.http.get<Colorset>(this.baseUrl + 'colorsetdefault');
+  }
+
+  setDefaultColorset(id: number, colorset: Colorset) {
+    return this.http.put(this.baseUrl + 'colorsetdefault/' + id, colorset);
+  }
+
   getColorset(id): Observable<Colorset> {
-    return this.http.get<Colorset>(this.baseUrl + 'Colorset/' + id);
+    return this.http.get<Colorset>(this.baseUrl + 'colorset/' + id);
   }
 
   updateColorset(id: number, colorset: Colorset) {
-    return this.http.put(this.baseUrl + 'Colorset/' + id, colorset);
+    return this.http.put(this.baseUrl + 'colorset/' + id, colorset);
   }
 
   deleteColorset(id: number) {

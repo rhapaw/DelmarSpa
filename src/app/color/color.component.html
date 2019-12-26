@@ -7,6 +7,24 @@
     </div>
   </div>
 
+  <div class="row mb-10">
+    <div class="col-lg-9">
+
+      <form class="form-inline">
+        <label for="colorsetname">Colorset Name</label>
+        <div class="select">
+          <select class="form-control" id="colorset" name="colorsetname" [(ngModel)]="selectedColorset">
+            <option *ngFor="let colorset of colorsets" [value]="colorset.name"> {{colorset.name}} </option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-3">
+      <h1>{{selectedColorset}}</h1>
+    </div>
+  </div>
+
+
 
   <!-- Heading and body colors for most of the stuff on the site -->
   <div class="row mb-3">
@@ -56,10 +74,10 @@
               (colorPickerClose)="cpCloseDialog()" />
           </p>
           <p>
-              <button type="button" class="btn my-colorpage-secondary" (click)="killSecondaryBg()" >
-                  No background (transparent)
-              </button>
-           </p>
+            <button type="button" class="btn my-colorpage-secondary" (click)="killSecondaryBg()">
+              No background (transparent)
+            </button>
+          </p>
         </div>
       </div>
 
@@ -91,11 +109,11 @@
               (colorPickerClose)="cpCloseDialog()" />
           </p>
           <p>
-              <button type="button" class="btn my-colorpage-secondary" (click)="killPrimaryBg()" >
-                  No background (transparent)
-              </button>
-              </p>
-       </div>
+            <button type="button" class="btn my-colorpage-secondary" (click)="killPrimaryBg()">
+              No background (transparent)
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -148,32 +166,32 @@
       </div>
 
       <div class="row">
-          <div class="col-lg-4 my-colorpage-primary">
-            <p>Background color<br>
-              [{{navbarBgValue}}] </p>
-          </div>
-          <div class="col-lg-8 my-colorpage-primary">
-            <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="'hex'"
-                [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
-                (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
-                (colorPickerClose)="cpCloseDialog()" />
-            </p>
-            <p>
-                <button type="button" class="btn my-colorpage-secondary" (click)="killNavbarBg()" >
-                    No background (transparent)
-                </button>
-                </p>
-          </div>
+        <div class="col-lg-4 my-colorpage-primary">
+          <p>Background color<br>
+            [{{navbarBgValue}}] </p>
         </div>
-
+        <div class="col-lg-8 my-colorpage-primary">
+          <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
+              (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
+              (colorPickerClose)="cpCloseDialog()" />
+          </p>
+          <p>
+            <button type="button" class="btn my-colorpage-secondary" (click)="killNavbarBg()">
+              No background (transparent)
+            </button>
+          </p>
+        </div>
       </div>
+
+    </div>
   </div>
 
   <div class="row">
-      <div class="col-lg-8">
-        <hr>
-      </div>
+    <div class="col-lg-8">
+      <hr>
     </div>
+  </div>
 
   <!-- Footer (info) colors -->
   <div class="row mb-3">
@@ -220,12 +238,12 @@
   </div>
 
   <div class="row">
-      <div class="col-lg-8">
-        <hr>
-      </div>
+    <div class="col-lg-8">
+      <hr>
     </div>
+  </div>
 
-<!--   <div class="row mb-3">
+  <!--   <div class="row mb-3">
     <div class="row mypad">
       other stuff goes here
     </div>

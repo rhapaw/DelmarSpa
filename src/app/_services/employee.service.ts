@@ -22,11 +22,16 @@ export class EmployeeService {
 
     let params = new HttpParams();
 
+    page = 1;
+    itemsPerPage = 5;
+
     if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
     }
 
+    console.log('Params: ', params);
+    
     return this.http
     .get<Contact[]>(this.baseUrl + 'contact', { observe: 'response', params })
     .pipe(

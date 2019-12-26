@@ -7,6 +7,13 @@ import { Colorset } from '../_models/colorset'
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
+  selectedColorset: string ='colorset3';
+  colorsets = [
+    {name: 'colorset1'},
+    {name: 'colorset2'},
+    {name: 'colorset3'},
+    {name: 'colorset4'}
+  ]
   colorDialogVar: string;
   colorDialogCancelValue: string;
   colorsetName: string;

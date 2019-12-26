@@ -31,6 +31,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ColorsetListResolver } from './_resolvers/colorset-list.resolver';
 import { ColorsetDetailResolver } from './_resolvers/colorset-detail.resolver';
 import { ColorsetDefaultResolver } from './_resolvers/colorset-default.resolver';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { FormsModule } from '@angular/forms';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,6 +54,7 @@ export function tokenGetter() {
       ColorComponent
    ],
    imports: [
+      FormsModule,
       BrowserModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
@@ -68,6 +71,7 @@ export function tokenGetter() {
           blacklistedRoutes: ['localhost:5000/api/auth']
         }
       }),
+      BsDropdownModule.forRoot(),
    ],
    providers: [
     AlertifyService,
