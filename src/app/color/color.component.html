@@ -1,28 +1,69 @@
 <div class="container-fluid">
-  <div class="row mb-3">
+  <div class="row mb-5">
     <div class="col-lg-8">
       <div class="my-colorpage-secondary mypad">
-        <h1>Select Colors for the Website</h1>
+        <h1>SELECT COLORS FOR THE WEBSITE</h1>
       </div>
     </div>
   </div>
 
-  <div class="row mb-10">
+  <div class="row mb-5">
     <div class="col-lg-9">
 
       <form class="form-inline">
-        <label for="colorsetname">Colorset Name</label>
+        <button class="btn my-colorpage-secondary mt-2" (click)="loadDefaultColorset()" >Load Default Colorset</button>
+        <span class="ml-2 mr-2 mt-2"> - OR -</span>
+          <label class="mr-2 mt-2 my-colorpage-secondary" for="colorsetname">Select the Colorset to load &nbsp;</label>
         <div class="select">
-          <select class="form-control" id="colorset" name="colorsetname" [(ngModel)]="selectedColorset">
-            <option *ngFor="let colorset of colorsets" [value]="colorset.name"> {{colorset.name}} </option>
+          <select class="form-control mt-2 my-colorpage-primary my-colorsetname-minwidth" id="colorset" name="colorsetname" [(ngModel)]="selectedColorsetName">
+            <option *ngFor="let colorset of colorsets" [value]="colorset.colorsetName">{{colorset.colorsetName}}</option>
           </select>
         </div>
+        <button class="btn my-colorpage-secondary ml-3 mt-2" (click)="loadSelectedColorset()" >Load Selected Colorset</button>
       </form>
     </div>
-    <div class="col-lg-3">
-      <h1>{{selectedColorset}}</h1>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-lg-6">
+        <span class="mr-2 my-colorpage-secondary" >Name of current Colorset:</span>
+        <span class="my-colorpage-primary my-colorsetname-minwidth ml-2">{{colorset.colorsetName}}</span>
+    </div>
+    <div class="col-lg-6 my-colorpage-primary">
+      <span class="mr-1">Is Default?:</span>
+      <span *ngIf="colorset.isDefault">Yes</span>
+      <span *ngIf="!colorset.isDefault">No</span>
+      <span class="ml-3 mr-1">Is Protected?:</span>
+      <span *ngIf="colorset.isProtected">Yes</span>
+      <span *ngIf="!colorset.isProtected">No</span>
     </div>
   </div>
+
+  <div class="row mt-2 mb-5">
+    <div class="col-lg-12">
+      <button class="btn my-colorpage-secondary mr-3 mt-2" (click)="saveCurrentColorset()" >Save Current Colorset</button>
+      <button class="btn my-colorpage-secondary mr-3 mt-2" (click)="deleteCurrentColorset()" >Delete Current Colorset</button>
+      <button class="btn my-colorpage-secondary mr-3 mt-2" (click)="setCurrentColorsetAsDefault()" >Set Current Colorset As Default</button>
+      <button class="btn my-colorpage-secondary mr-3 mt-2" (click)="protectCurrentColorset(true)" >Protect Current Colorset</button>
+      <button class="btn my-colorpage-secondary mt-2" (click)="protectCurrentColorset(false)" >Unprotect Current Colorset</button>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-lg-6">
+
+      <form class="form-inline">
+        <label class="mr-2 mt-2 my-colorpage-secondary" for="newColorsetName">New Colorset Name &nbsp;</label>
+        <input type="text" class="form-control mt-2 my-colorpage-primary my-colorsetname-minwidth"
+          name="newColorsetName" id="newColorsetName"
+          placeholder="Enter name for new colorset" [(ngModel)]="newColorsetName">
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <button class="btn my-colorpage-secondary ml-3 mt-2" (click)="createColorset()" >Create New Colorset</button>
+    </div>
+  </div>
+
 
 
 
@@ -52,11 +93,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Text color<br>
-            [{{secondaryColorValue}}] </p>
+            [{{colorset.secondaryColor}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="secondaryColorValue" [style.background]="secondaryColorValue"
-              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryColorVar)"
+          <p><input [(colorPicker)]="colorset.secondaryColor" [style.background]="colorset.secondaryColor"
+              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.secondaryColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -65,11 +106,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Background color<br>
-            [{{secondaryBgValue}}] </p>
+            [{{colorset.secondaryBg}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="secondaryBgValue" [style.background]="secondaryBgValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(secondaryBgVar)"
+          <p><input [(colorPicker)]="colorset.secondaryBg" [style.background]="colorset.secondaryBg" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.secondaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -87,11 +128,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Text color<br>
-            [{{primaryColorValue}}] </p>
+            [{{colorset.primaryColor}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="primaryColorValue" [style.background]="primaryColorValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryColorVar)"
+          <p><input [(colorPicker)]="colorset.primaryColor" [style.background]="colorset.primaryColor" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.primaryColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -100,11 +141,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Background color<br>
-            [{{primaryBgValue}}]</p>
+            [{{colorset.primaryBg}}]</p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="primaryBgValue" [style.background]="primaryBgValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(primaryBgVar)"
+          <p><input [(colorPicker)]="colorset.primaryBg" [style.background]="colorset.primaryBg" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.primaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -129,7 +170,7 @@
     <div class="col-lg-4">
       <div class="my-navbar mypad">
         <p>
-          Nav-Bar-Normal-Item <span [style.color]="navbarColorActiveValue">Nav-Bar-Active-Item</span>
+          Nav-Bar-Normal-Item <span [style.color]="colorset.navbarColorActive">Nav-Bar-Active-Item</span>
         </p>
       </div>
     </div>
@@ -140,11 +181,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Normal item color<br>
-            [{{navbarColorValue}}] </p>
+            [{{colorset.navbarColor}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="navbarColorValue" [style.background]="navbarColorValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorVar)"
+          <p><input [(colorPicker)]="colorset.navbarColor" [style.background]="colorset.navbarColor" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.navbarColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -154,11 +195,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Active item color<br>
-            [{{navbarColorActiveValue}}] </p>
+            [{{colorset.navbarColorActive}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="navbarColorActiveValue" [style.background]="navbarColorActiveValue"
-              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarColorActiveVar)"
+          <p><input [(colorPicker)]="colorset.navbarColorActive" [style.background]="colorset.navbarColorActive"
+              [cpOutputFormat]="'hex'" [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.navbarColorActiveVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -168,11 +209,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Background color<br>
-            [{{navbarBgValue}}] </p>
+            [{{colorset.navbarBg}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="navbarBgValue" [style.background]="navbarBgValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(navbarBgVar)"
+          <p><input [(colorPicker)]="colorset.navbarBg" [style.background]="colorset.navbarBg" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.navbarBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -211,11 +252,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Text color<br>
-            [{{infoColorValue}}] </p>
+            [{{colorset.infoColor}}] </p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="infoColorValue" [style.background]="infoColorValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoColorVar)"
+          <p><input [(colorPicker)]="colorset.infoColor" [style.background]="colorset.infoColor" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.infoColorVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>
@@ -224,11 +265,11 @@
       <div class="row">
         <div class="col-lg-4 my-colorpage-primary">
           <p>Background color<br>
-            [{{infoBgValue}}]</p>
+            [{{colorset.infoBg}}]</p>
         </div>
         <div class="col-lg-8 my-colorpage-primary">
-          <p><input [(colorPicker)]="infoBgValue" [style.background]="infoBgValue" [cpOutputFormat]="'hex'"
-              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(infoBgVar)"
+          <p><input [(colorPicker)]="colorset.infoBg" [style.background]="colorset.infoBg" [cpOutputFormat]="'hex'"
+              [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.infoBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
               (colorPickerClose)="cpCloseDialog()" />
           </p>

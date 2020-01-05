@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Colorset } from '../_models/colorset';
 import { PaginatedResult } from '../_models/pagination';
@@ -15,7 +15,7 @@ export class ColorsetService
 
   constructor(private http: HttpClient) {}
 
-  getColorsets(page?, itemsPerPage?, colorsetParams?): Observable<PaginatedResult<Colorset[]>>
+  getColorsets(page?, itemsPerPage?): Observable<PaginatedResult<Colorset[]>>
   {
     const paginatedResult: PaginatedResult<Colorset[]> = new PaginatedResult<Colorset[]>();
 
@@ -24,14 +24,6 @@ export class ColorsetService
     if (page != null && itemsPerPage != null) {
       params = params.append('pageNumber', page);
       params = params.append('pageSize', itemsPerPage);
-    }
-
-    if (colorsetParams != null) {
-      params = params.append('minAge', colorsetParams.minAge);
-      params = params.append('maxAge', colorsetParams.maxAge);
-      params = params.append('gender', colorsetParams.gender);
-      params = params.append('orderBy', colorsetParams.orderBy);
-      // console.log('InGetUsers', userParams.minAge, userParams.maxAge, userParams.gender, params );
     }
 
     return this.http

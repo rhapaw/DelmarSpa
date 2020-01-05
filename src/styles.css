@@ -12,7 +12,6 @@
   --my-navbar-color: white;
   --my-navbar-color-active: #868181;
   --my-navbar-bg: #0f3193;
-  --my-fake-color: white;
 }
 
 body {
@@ -72,6 +71,10 @@ h6 {
   min-height: 900px;
 }
 
+
+#footer {
+  margin-top: 20px;
+}
 
 .dcre-main-container {
   padding: 0 5% 0 5%;
@@ -185,11 +188,6 @@ h6 {
 
 .router-link-active {
   color: var(--my-navbar-color-active) !important;
-}
-
-#footer {
-  margin-top: 20px;
-  background-color: white;
 }
 
 .my-primary-color {

@@ -8,6 +8,14 @@
   background-color: gray;
 }
 
+.my-colorsetname-minwidth {
+  min-width: 400px;
+}
+
+.my-colorsetdescription-minwidth {
+  min-width: 700px;
+}
+
 hr {
   color: black;
   background-color: black;

@@ -33,6 +33,8 @@ import { ColorsetDetailResolver } from './_resolvers/colorset-detail.resolver';
 import { ColorsetDefaultResolver } from './_resolvers/colorset-default.resolver';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule } from '@angular/forms';
+import { NgxCheckboxModule } from 'ngx-checkbox';
+import { MatCheckboxModule } from '@angular/material';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -72,6 +74,8 @@ export function tokenGetter() {
         }
       }),
       BsDropdownModule.forRoot(),
+      NgxCheckboxModule,
+      MatCheckboxModule
    ],
    providers: [
     AlertifyService,
