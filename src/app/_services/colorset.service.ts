@@ -50,7 +50,7 @@ export class ColorsetService
     return this.http.put(this.baseUrl + 'colorsetdefault/' + id, colorset);
   }
 
-  getColorset(id): Observable<Colorset> {
+  getColorset(id: number): Observable<Colorset> {
     return this.http.get<Colorset>(this.baseUrl + 'colorset/' + id);
   }
 
