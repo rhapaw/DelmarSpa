@@ -1,4 +1,4 @@
-export class Property {
+export class Listing {
     // For all properties (sale or lease)
     id?: number;
     saleOrLease: string = 'lease';

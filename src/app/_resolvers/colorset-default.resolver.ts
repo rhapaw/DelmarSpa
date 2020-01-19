@@ -16,7 +16,7 @@ export class ColorsetDefaultResolver implements Resolve<Colorset> {
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Colorset> {
-    return this.colorsetService.getColorset('Default').pipe(
+    return this.colorsetService.getDefaultColorset().pipe(
       catchError(error => {
         this.alertify.error('Problem retrieving default colorset');
         // this.router.navigate(['/home']);

@@ -25,7 +25,7 @@ import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { ColorsetService } from './_services/colorset.service';
 import { EmployeeService } from './_services/employee.service';
-import { PropertyService } from './_services/property.service';
+import { ListingService } from './_services/listing.service';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ColorsetListResolver } from './_resolvers/colorset-list.resolver';
@@ -82,7 +82,7 @@ export function tokenGetter() {
     AuthService,
     ColorsetService,
     EmployeeService,
-    PropertyService,
+    ListingService,
     ColorsetListResolver,
     ColorsetDetailResolver,
     ColorsetDefaultResolver

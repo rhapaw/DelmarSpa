@@ -63,7 +63,7 @@ export class ColorComponent implements OnInit {
     this.colorDialogCancelValue = 'FFFFFF';
 
     this.colorset = new Colorset();
-    this.colorset.colorsetName = 'DEFAULT';
+    this.colorset.colorsetName = 'Default';
     // this.colorset.description = 'Blorf!'
     this.colorset.isDefault = true;
     this.colorset.isProtected = true;
@@ -149,7 +149,7 @@ export class ColorComponent implements OnInit {
   loadSelectedColorset() : void {
     // console.log('Load ' + this.selectedColorset);
     // var index = peoples.findIndex(p => p.attr1 == "john")
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.colorset.colorsetName);
+    let index = this.colorsets.findIndex( c => c.colorsetName === this.selectedColorsetName);
     if (index >= 0) {
       console.log('Index to load is: ' + index);
     }
