@@ -54,6 +54,10 @@ export class ColorsetService
     return this.http.get<Colorset>(this.baseUrl + 'colorset/' + id);
   }
 
+  createColorset(colorset: Colorset) {
+    return this.http.post(this.baseUrl + 'colorset/', colorset);
+  }
+
   updateColorset(id: number, colorset: Colorset) {
     return this.http.put(this.baseUrl + 'colorset/' + id, colorset);
   }

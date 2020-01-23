@@ -15,8 +15,8 @@
         <span class="ml-2 mr-2 mt-2"> - OR -</span>
           <label class="mr-2 mt-2 my-colorpage-secondary" for="colorsetname">Select the Colorset to load &nbsp;</label>
         <div class="select">
-          <select class="form-control mt-2 my-colorpage-primary my-colorsetname-minwidth" id="colorset" name="colorsetname" [(ngModel)]="selectedColorsetName">
-            <option *ngFor="let colorset of colorsets" [value]="colorset.colorsetName">{{colorset.colorsetName}}</option>
+          <select class="form-control mt-2 my-colorpage-primary my-colorsetname-minwidth" id="colorset" name="colorsetname" [(ngModel)]="selectedColorsetId">
+            <option *ngFor="let colorset of colorsets" [value]="colorset.id">{{colorset.colorsetName}}</option>
           </select>
         </div>
         <button class="btn my-colorpage-secondary ml-3 mt-2" (click)="loadSelectedColorset()" >Load Selected Colorset</button>
@@ -30,12 +30,8 @@
         <span class="my-colorpage-primary my-colorsetname-minwidth ml-2">{{colorset.colorsetName}}</span>
     </div>
     <div class="col-lg-6 my-colorpage-primary">
-      <span class="mr-1">Is Default?:</span>
-      <span *ngIf="colorset.isDefault">Yes</span>
-      <span *ngIf="!colorset.isDefault">No</span>
-      <span class="ml-3 mr-1">Is Protected?:</span>
-      <span *ngIf="colorset.isProtected">Yes</span>
-      <span *ngIf="!colorset.isProtected">No</span>
+      <span>Is Default?: {{colorset.isDefault}}</span>
+      <span class="ml-3">Is Protected?: {{colorset.isProtected}}</span>
     </div>
   </div>
 
@@ -112,11 +108,11 @@
           <p><input [(colorPicker)]="colorset.secondaryBg" [style.background]="colorset.secondaryBg" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.secondaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
-              (colorPickerClose)="cpCloseDialog()" />
+              (colorPickerClose)="cpCloseDialog()" [disabled]="colorset.secondaryBgIsNone==true" />
           </p>
           <p>
-            <button type="button" class="btn my-colorpage-secondary" (click)="killSecondaryBg()">
-              No background (transparent)
+            <button type="button" class="btn my-colorpage-secondary" (click)="toggleSecondaryBg()">
+              [{{secondaryBgButtonText}}]
             </button>
           </p>
         </div>
@@ -147,11 +143,11 @@
           <p><input [(colorPicker)]="colorset.primaryBg" [style.background]="colorset.primaryBg" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.primaryBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
-              (colorPickerClose)="cpCloseDialog()" />
+              (colorPickerClose)="cpCloseDialog()" [disabled]="colorset.primaryBgIsNone==true" />
           </p>
           <p>
-            <button type="button" class="btn my-colorpage-secondary" (click)="killPrimaryBg()">
-              No background (transparent)
+            <button type="button" class="btn my-colorpage-secondary" (click)="togglePrimaryBg()">
+              [{{primaryBgButtonText}}]
             </button>
           </p>
         </div>
@@ -215,11 +211,11 @@
           <p><input [(colorPicker)]="colorset.navbarBg" [style.background]="colorset.navbarBg" [cpOutputFormat]="'hex'"
               [cpCancelButton]="true" (colorPickerOpen)="cpOpenDialog(colorVarNames.navbarBgVar)"
               (colorPickerChange)="cpChangeColor($event)" (colorPickerCancel)="cpCancelDialog()"
-              (colorPickerClose)="cpCloseDialog()" />
+              (colorPickerClose)="cpCloseDialog()" [disabled]="colorset.navbarBgIsNone==true" />
           </p>
           <p>
-            <button type="button" class="btn my-colorpage-secondary" (click)="killNavbarBg()">
-              No background (transparent)
+            <button type="button" class="btn my-colorpage-secondary" (click)="toggleNavbarBg()">
+              [{{navbarBgButtonText}}]
             </button>
           </p>
         </div>

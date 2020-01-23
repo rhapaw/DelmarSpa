@@ -4,36 +4,7 @@ import { ColorsetService } from '../_services/colorset.service';
 import { PaginatedResult, Pagination } from '../_models/pagination';
 import { AlertifyService } from '../_services/alertify.service';
 import { Observable, from } from 'rxjs';
-
-class CssColorVarNames {
-  // Vars used to hold names of CSS vars
-  primaryColorVar: string;
-  primaryBgVar: string;
-  secondaryColorVar: string;
-  secondaryBgVar: string;
-  infoColorVar: string;
-  infoBgVar: string;
-  brandColorVar: string;
-  brandBgVar: string;
-  navbarColorVar: string;
-  navbarBgVar: string;
-  navbarColorActiveVar: string;
-
-  constructor() {
-    // Set the names used by the CSS color vars
-    this.primaryColorVar = '--my-primary-color';
-    this.primaryBgVar = '--my-primary-bg';
-    this.secondaryColorVar = '--my-secondary-color';
-    this.secondaryBgVar = '--my-secondary-bg';
-    this.infoColorVar = '--my-info-color';
-    this.infoBgVar = '--my-info-bg';
-    this.brandColorVar = '--my-brand-color';
-    this.brandBgVar = '--my-brand-bg';
-    this.navbarColorVar = '--my-navbar-color';
-    this.navbarBgVar = '--my-navbar-bg';
-    this.navbarColorActiveVar = '--my-navbar-color-active';
-  }
-}
+import { CssColorVarNames } from '../_misc/css-color-var-names';
 
 @Component({
   selector: 'app-color',
@@ -44,38 +15,55 @@ export class ColorComponent implements OnInit {
   pagination: Pagination;
   colorsets: Colorset[];
   colorset: Colorset;
-  selectedColorsetName: string = 'DEFAULT';
+  selectedColorsetId: number;
   colorDialogVar: string;
   colorDialogCancelValue: string;
-  // colorsetName: string;
   newColorsetName: string;
-  newColorsetDescription: string;
-  // deleteColorsetName: string;
-  primaryBgIsNone = false;
-  secondaryBgIsNone = false;
-  navbarBgIsNone = false;
+
+  pendingChanges: boolean;
+
+  primaryBgButtonText: string;
+  secondaryBgButtonText: string;
+  navbarBgButtonText: string;
+
   colorVarNames: CssColorVarNames = new CssColorVarNames();
 
   constructor(private colorsetService: ColorsetService, private alertify: AlertifyService) { }
 
   ngOnInit() {
+    this.pendingChanges = false;
+
     this.colorDialogVar = '';
     this.colorDialogCancelValue = 'FFFFFF';
 
     this.colorset = new Colorset();
     this.colorset.colorsetName = 'Default';
-    // this.colorset.description = 'Blorf!'
+    this.colorset.id = 2;
     this.colorset.isDefault = true;
     this.colorset.isProtected = true;
 
     // Initialize the local vars from CSS vars
     // this.setLocalVarsFromCssColorVars();
 
-    ColorComponent.setColorsetFromCssVars(this.colorset);
+    Colorset.setColorsetFromCssVars(this.colorset);
 
     // this.colorset = this.loadColorSet(this.colorsetName);
 
     this.loadColorsets();
+
+    this.primaryBgButtonText = 'Not Transparent';
+    this.secondaryBgButtonText = 'Not Transparent';
+    this.navbarBgButtonText = 'Not Transparent';
+
+    if (this.colorset.primaryBgIsNone) {
+      this.primaryBgButtonText = 'Transparent';
+      }
+    if (this.colorset.secondaryBgIsNone) {
+      this.secondaryBgButtonText = 'Transparent';
+    }
+    if (this.colorset.navbarBgIsNone) {
+      this.navbarBgButtonText = 'Transparent';
+    }
   }
 
   cpOpenDialog(colorName: string) {
@@ -101,31 +89,52 @@ export class ColorComponent implements OnInit {
   cpChangeColor(e: any) {
     // console.log(`Change for: ${this.colorDialogVar} New value is: ${e}`);
     document.documentElement.style.setProperty(this.colorDialogVar, e);
+    this.pendingChanges = true;
   }
 
-  killSecondaryBg() {
-    document.documentElement.style.setProperty(this.colorVarNames.secondaryBgVar, 'none');
-    this.colorset.secondaryBg = 'none';
-    // console.log('kill secondary bg');
+  toggleSecondaryBg() {
+    this.pendingChanges = true;
+    this.colorset.secondaryBgIsNone = !this.colorset.secondaryBgIsNone;
+
+    if (this.colorset.secondaryBgIsNone) {
+      document.documentElement.style.setProperty(this.colorVarNames.secondaryBgVar, 'none');
+      this.secondaryBgButtonText = 'Transparent';
+    } else {
+      document.documentElement.style.setProperty(this.colorVarNames.secondaryBgVar, this.colorset.secondaryBg);
+      this.secondaryBgButtonText = 'Not Transparent';
+    }
   }
 
-  killPrimaryBg() {
-    document.documentElement.style.setProperty(this.colorVarNames.primaryBgVar, 'none');
-    this.colorset.primaryBg = 'none';
-    console.log('kill primary bg');
+  togglePrimaryBg() {
+    this.pendingChanges = true;
+    this.colorset.primaryBgIsNone = !this.colorset.primaryBgIsNone;
+
+    if (this.colorset.primaryBgIsNone) {
+      document.documentElement.style.setProperty(this.colorVarNames.primaryBgVar, 'none');
+      this.primaryBgButtonText = 'Transparent';
+      } else {
+      document.documentElement.style.setProperty(this.colorVarNames.primaryBgVar, this.colorset.primaryBg);
+      this.primaryBgButtonText = 'Not Transparent';
+    }
   }
 
-  killNavbarBg() {
-    document.documentElement.style.setProperty(this.colorVarNames.navbarBgVar, 'none');
-    this.colorset.navbarBg = 'none';
-    console.log('kill navbar bg');
+  toggleNavbarBg() {
+    this.pendingChanges = true;
+    this.colorset.navbarBgIsNone = !this.colorset.navbarBgIsNone;
+    if (this.colorset.navbarBgIsNone) {
+      document.documentElement.style.setProperty(this.colorVarNames.navbarBgVar, 'none');
+      this.navbarBgButtonText = 'Transparent';
+    } else {
+      document.documentElement.style.setProperty(this.colorVarNames.navbarBgVar, this.colorset.navbarBg);
+      this.navbarBgButtonText = 'Not Transparent';
+    }
   }
 
   loadColorsets(page?:number, perpage?:number) : void {
-    // debugger;
-    //let paginatedResult: Observable<>;
     this.colorsetService.getColorsets(page, perpage).subscribe( res => {
       // debugger;
+      console.log('Res: ' + res);
+      console.log('All colorsets: ' + res.result);
       this.pagination = res.pagination;
       this.colorsets = res.result;
     }, err => {
@@ -138,47 +147,79 @@ export class ColorComponent implements OnInit {
   }
 
   loadDefaultColorset() : void {
-    // console.log('Load ' + this.selectedColorset);
-    // var index = peoples.findIndex(p => p.attr1 == "john")
     let index = this.colorsets.findIndex( c => c.isDefault);
     if (index >= 0) {
       console.log('Index of default colorset is: ' + index);
+      Colorset.deepCopyColorset(this.colorsets[index], this.colorset, true);
+      Colorset.setCssVarsFromColorSet(this.colorset);
+      this.pendingChanges = false;
     }
   }
 
   loadSelectedColorset() : void {
-    // console.log('Load ' + this.selectedColorset);
-    // var index = peoples.findIndex(p => p.attr1 == "john")
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.selectedColorsetName);
+    console.log('Selected Colorset Id is: ' + this.selectedColorsetId);
+    let index = this.colorsets.findIndex( c => c.id == this.selectedColorsetId);
     if (index >= 0) {
       console.log('Index to load is: ' + index);
+      Colorset.deepCopyColorset(this.colorsets[index], this.colorset, true);
+      Colorset.setCssVarsFromColorSet(this.colorset);
+      this.pendingChanges = false;
     }
   }
 
   setCurrentColorsetAsDefault() : void {
-    // console.log('Load ' + this.selectedColorset);
-    // var index = peoples.findIndex(p => p.attr1 == "john")
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.colorset.colorsetName);
+    let index = this.colorsets.findIndex( c => c.id === this.colorset.id);
     if (index >= 0) {
       console.log('Index to set as default is: ' + index);
+      // Reset the current default - there can only be one default.
+      let currDefaultIndex = this.getIndexOfDefaultColorset();
+      if (currDefaultIndex >= 0) {
+        this.colorsets[currDefaultIndex].isDefault = false;
+      }
+      this.colorsets[index].isDefault = true;
+      this.colorset.isDefault = true;
+      // Write it to the database.
+      this.colorsetService.setDefaultColorset(this.colorset.id, this.colorset).subscribe( res => {
+        // ignore successful result
+      }, err => {
+        // show the error
+        this.alertify.error(err);
+      } );
+
+      // The colorset has not been saved - only the default flag has been saved.
+      this.pendingChanges = true;
     }
   }
 
   protectCurrentColorset(setProtect: boolean) : void {
     // console.log('Load ' + this.selectedColorset);
     // var index = peoples.findIndex(p => p.attr1 == "john")
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.colorset.colorsetName);
+    console.log('Current Colorset Id is: ' + this.colorset.id);
+    let index = this.colorsets.findIndex( c => c.id == this.colorset.id);
     if (index >= 0) {
       console.log('Index to protect/unprotect is: ' + index + ' Protect: ' + setProtect);
+      this.colorsets[index].isProtected = setProtect;
+      this.colorset.isProtected = setProtect;
+      this.pendingChanges = true;
     }
   }
 
   saveCurrentColorset() : void {
     // console.log('Load ' + this.selectedColorset);
     // var index = peoples.findIndex(p => p.attr1 == "john")
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.colorset.colorsetName);
+    console.log('Current Colorset Id is: ' + this.colorset.id);
+    let index = this.colorsets.findIndex( c => c.id == this.colorset.id);
     if (index >= 0) {
       console.log('Index to save is: ' + index);
+      this.pendingChanges = false;
+      this.colorsetService.updateColorset(this.colorset.id, this.colorset).subscribe( res => {
+        // ignore successful result
+        console.log('Saved');
+      }, err => {
+        // show the error
+        this.alertify.error(err);
+      } );
+
     }
   }
 
@@ -187,80 +228,63 @@ export class ColorComponent implements OnInit {
     // var index = peoples.findIndex(p => p.attr1 == "john")
     // Cannot delete default colorset
     // Cannot delete protected colorset
-    let index = this.colorsets.findIndex( c => c.colorsetName === this.colorset.colorsetName);
+    console.log('Current Colorset Id is: ' + this.colorset.id);
+    let index = this.colorsets.findIndex( c => c.id == this.colorset.id);
     if (index >= 0) {
       console.log('Index to delete is: ' + index);
-    }
+      if (this.colorsets[index].isDefault) {
+        this.alertify.error('This is the default colorset - it cannot be deleted');
+        return;
+      }
+      if (this.colorsets[index].isProtected) {
+        this.alertify.error('This colorset is protected - it cannot be deleted');
+        return;
+      }
+
+      this.colorsetService.deleteColorset(this.colorsets[index].id).subscribe( res => {
+      // If delete was successful, then we load the default colorset.
+      this.pendingChanges = false;
+      this.loadDefaultColorset();
+    }, err => {
+      // show the error
+      this.alertify.error(err);
+    } );
+
   }
+}
 
   createColorset() : void {
     // console.log('Load ' + this.selectedColorset);
     // var index = peoples.findIndex(p => p.attr1 == "john")
     console.log('Create colorset:' + this.newColorsetName);
+    // Set name and clear id. Set isDefault and isProtected to false.
+    this.colorset.colorsetName = this.newColorsetName;
+    this.colorset.id = null;
+    this.colorset.isDefault = false;
+    this.colorset.isProtected = false;
+
+    this.colorsetService.createColorset(this.colorset).subscribe( res => {
+      // If create was successful, then we append the new colorset to colorsets[].
+      this.pendingChanges = false;
+      let xx: Colorset = (res as Colorset);
+      console.log('New colorset: ' + xx);
+      this.colorset.id = xx.id;
+      console.log('New colorset id: ' + xx.id);
+    }, err => {
+      // show the error
+      this.alertify.error(err);
+    } );
   }
 
-  static getIndexOfDefaultColorset(colorsets: Colorset[]) : number {
-    let index = colorsets.findIndex( c => c.isDefault === true);
+  getIndexOfColorsetById(colorsetId: number) : number {
+    let index = this.colorsets.findIndex( c => c.id == colorsetId);
     return index;
   }
 
-  static getIndexOfNamedColorset(colorsets: Colorset[], colorsetName: string) : number {
-    let index = colorsets.findIndex( c => c.colorsetName === colorsetName);
+  getIndexOfDefaultColorset() : number {
+    let index = this.colorsets.findIndex( c => c.isDefault == true);
     return index;
   }
 
-  static deepCopyColorset(fromColorset: Colorset, toColorset: Colorset, includeAudit: boolean) : void {
-    toColorset.id = fromColorset.id;
-    toColorset.colorsetName = fromColorset.colorsetName;
-    toColorset.isDefault = fromColorset.isDefault;
-    toColorset.primaryColor = fromColorset.primaryColor;
-    toColorset.primaryBg = fromColorset.primaryBg;
-    toColorset.secondaryColor = fromColorset.secondaryColor;
-    toColorset.secondaryBg = fromColorset.secondaryBg;
-    toColorset.infoColor = fromColorset.infoColor;
-    toColorset.infoBg = fromColorset.infoBg;
-    toColorset.brandColor = fromColorset.brandColor;
-    toColorset.brandBg =fromColorset.brandBg;
-    toColorset.navbarColor = fromColorset.navbarColor;
-    toColorset.navbarColorActive = fromColorset.navbarColorActive;
-    toColorset.navbarBg = fromColorset.navbarBg;
-    if (includeAudit) {
-      toColorset.createdAt = fromColorset.createdAt;
-      toColorset.updatedAt = fromColorset.updatedAt;
-      toColorset.version = fromColorset.version;
-    }
-  }
-
-  static setColorsetFromCssVars(colorset: Colorset) {
-    let colorVarNames: CssColorVarNames = new CssColorVarNames();
-
-    colorset.primaryColor = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.primaryColorVar);
-    colorset.primaryBg = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.primaryBgVar);
-    colorset.secondaryColor = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.secondaryColorVar);
-    colorset.secondaryBg = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.secondaryBgVar);
-    colorset.infoColor = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.infoColorVar);
-    colorset.infoBg = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.infoBgVar);
-    colorset.brandColor = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.brandColorVar);
-    colorset.brandBg = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.brandBgVar);
-    colorset.navbarColor = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.navbarColorVar);
-    colorset.navbarBg = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.navbarBgVar);
-    colorset.navbarColorActive = getComputedStyle(document.documentElement).getPropertyValue(colorVarNames.navbarColorActiveVar);
-  }
-
-  setCssVarsFromColorSet(colorset: Colorset){
-    let colorVarNames: CssColorVarNames = new CssColorVarNames();
-
-    document.documentElement.style.setProperty(colorVarNames.primaryColorVar, colorset.primaryColor);
-    document.documentElement.style.setProperty(colorVarNames.primaryBgVar, colorset.primaryBg);
-    document.documentElement.style.setProperty(colorVarNames.secondaryColorVar, colorset.secondaryColor);
-    document.documentElement.style.setProperty(colorVarNames.secondaryBgVar, colorset.secondaryBg);
-    document.documentElement.style.setProperty(colorVarNames.infoColorVar, colorset.infoColor);
-    document.documentElement.style.setProperty(colorVarNames.infoBgVar, colorset.infoBg);
-    document.documentElement.style.setProperty(colorVarNames.brandColorVar, colorset.brandColor);
-    document.documentElement.style.setProperty(colorVarNames.brandBgVar, colorset.brandBg);
-    document.documentElement.style.setProperty(colorVarNames.navbarColorVar, colorset.navbarColor);
-    document.documentElement.style.setProperty(colorVarNames.navbarBgVar, colorset.navbarBg);
-    document.documentElement.style.setProperty(colorVarNames.navbarColorActiveVar, colorset.navbarColorActive);
-  }
 }
 
