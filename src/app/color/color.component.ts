@@ -26,9 +26,13 @@ export class ColorComponent implements OnInit {
   secondaryBgButtonText: string;
   navbarBgButtonText: string;
 
+  _alertify: AlertifyService;
+
   colorVarNames: CssColorVarNames = new CssColorVarNames();
 
-  constructor(private colorsetService: ColorsetService, private alertify: AlertifyService) { }
+  constructor(private colorsetService: ColorsetService, private alertify: AlertifyService) {
+    this._alertify = alertify;
+  }
 
   ngOnInit() {
     this.pendingChanges = false;
@@ -147,12 +151,18 @@ export class ColorComponent implements OnInit {
   }
 
   loadDefaultColorset() : void {
+    this._alertify.message('Loading default colorset.');
+    console.log('Loading default colorset');
     let index = this.colorsets.findIndex( c => c.isDefault);
+    console.log('Default colorset index is: ' + index);
     if (index >= 0) {
       console.log('Index of default colorset is: ' + index);
       Colorset.deepCopyColorset(this.colorsets[index], this.colorset, true);
       Colorset.setCssVarsFromColorSet(this.colorset);
       this.pendingChanges = false;
+    } else {
+      this.alertify.error
+      // this.alertify.error('There is no default colorset!');
     }
   }
 
@@ -243,12 +253,14 @@ export class ColorComponent implements OnInit {
 
       this.colorsetService.deleteColorset(this.colorsets[index].id).subscribe( res => {
       // If delete was successful, then we load the default colorset.
-      this.pendingChanges = false;
+      console.log('About to load default colorset after deletion.');
       this.loadDefaultColorset();
     }, err => {
       // show the error
       this.alertify.error(err);
     } );
+
+    console.log('Done with delete.')
 
   }
 }
@@ -272,6 +284,7 @@ export class ColorComponent implements OnInit {
       console.log('New colorset id: ' + xx.id);
     }, err => {
       // show the error
+      console.log('Failed to create colorset: ' + this.colorset.colorsetName);
       this.alertify.error(err);
     } );
   }

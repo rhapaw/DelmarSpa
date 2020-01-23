@@ -21,7 +21,6 @@ import { ColorComponent } from './color/color.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
-import { AlertifyService } from './_services/alertify.service';
 import { AuthService } from './_services/auth.service';
 import { ColorsetService } from './_services/colorset.service';
 import { EmployeeService } from './_services/employee.service';
@@ -35,6 +34,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule } from '@angular/forms';
 import { NgxCheckboxModule } from 'ngx-checkbox';
 import { MatCheckboxModule } from '@angular/material';
+import { AlertifyService } from './_services/alertify.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -43,6 +43,7 @@ export function tokenGetter() {
 @NgModule({
    declarations: [
       AppComponent,
+      ColorComponent,
       ContactComponent,
       CommercialComponent,
       LinksComponent,
@@ -52,8 +53,7 @@ export function tokenGetter() {
       HeaderComponent,
       FooterComponent,
       ManagementComponent,
-      NavComponent,
-      ColorComponent
+      NavComponent
    ],
    imports: [
       FormsModule,
