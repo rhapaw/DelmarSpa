@@ -31,9 +31,9 @@ export class EmployeeService {
     }
 
     console.log('Params: ', params);
-    
+
     return this.http
-    .get<Contact[]>(this.baseUrl + 'contact', { observe: 'response', params })
+    .get<Contact[]>(this.baseUrl + 'contacts', { observe: 'response', params })
     .pipe(
       map(response =>
         {
@@ -69,7 +69,7 @@ export class EmployeeService {
       }
 
       return this.http
-      .get<Employee[]>(this.baseUrl + 'employee', { observe: 'response', params })
+      .get<Employee[]>(this.baseUrl + 'employees', { observe: 'response', params })
       .pipe(
         map(response =>
           {
@@ -85,15 +85,15 @@ export class EmployeeService {
     }
 
     getProperty(id): Observable<Employee> {
-    return this.http.get<Employee>(this.baseUrl + 'employee/' + id);
+    return this.http.get<Employee>(this.baseUrl + 'employees/' + id);
   }
 
   updateProperty(id: number, employee: Employee) {
-    return this.http.put(this.baseUrl + 'employee/' + id, employee);
+    return this.http.put(this.baseUrl + 'employees/' + id, employee);
   }
 
   deleteProperty(id: number) {
-    return this.http.delete(this.baseUrl + 'employee/' + id);
+    return this.http.delete(this.baseUrl + 'employees/' + id);
   }
 }
 

@@ -35,7 +35,7 @@ export class ListingService {
     }
 
     return this.http
-    .get<Listing[]>(this.baseUrl + 'property', { observe: 'response', params })
+    .get<Listing[]>(this.baseUrl + 'listings', { observe: 'response', params })
     .pipe(
       map(response =>
         {
@@ -51,15 +51,15 @@ export class ListingService {
   }
 
   getProperty(id): Observable<Listing> {
-    return this.http.get<Listing>(this.baseUrl + 'property/' + id);
+    return this.http.get<Listing>(this.baseUrl + 'listings/' + id);
   }
 
   updateProperty(id: number, property: Listing) {
-    return this.http.put(this.baseUrl + 'property/' + id, property);
+    return this.http.put(this.baseUrl + 'listings/' + id, property);
   }
 
   deleteProperty(id: number) {
-    return this.http.delete(this.baseUrl + 'property/' + id);
+    return this.http.delete(this.baseUrl + 'listings/' + id);
   }
 
 }

@@ -27,7 +27,7 @@ export class ColorsetService
     }
 
     return this.http
-    .get<Colorset[]>(this.baseUrl + 'Colorset', { observe: 'response', params })
+    .get<Colorset[]>(this.baseUrl + 'colorsets', { observe: 'response', params })
     .pipe(
       map(response =>
         {
@@ -43,27 +43,27 @@ export class ColorsetService
   }
 
   getDefaultColorset(): Observable<Colorset> {
-    return this.http.get<Colorset>(this.baseUrl + 'colorsetdefault');
+    return this.http.get<Colorset>(this.baseUrl + 'colorsetsdefault');
   }
 
   setDefaultColorset(id: number, colorset: Colorset) {
-    return this.http.put(this.baseUrl + 'colorsetdefault/' + id, colorset);
+    return this.http.put(this.baseUrl + 'colorsetsdefault/' + id, colorset);
   }
 
   getColorset(id: number): Observable<Colorset> {
-    return this.http.get<Colorset>(this.baseUrl + 'colorset/' + id);
+    return this.http.get<Colorset>(this.baseUrl + 'colorsets/' + id);
   }
 
   createColorset(colorset: Colorset) {
-    return this.http.post(this.baseUrl + 'colorset/', colorset);
+    return this.http.post(this.baseUrl + 'colorsets/', colorset);
   }
 
   updateColorset(id: number, colorset: Colorset) {
-    return this.http.put(this.baseUrl + 'colorset/' + id, colorset);
+    return this.http.put(this.baseUrl + 'colorsets/' + id, colorset);
   }
 
   deleteColorset(id: number) {
-    return this.http.delete(this.baseUrl + 'Colorset/' + id);
+    return this.http.delete(this.baseUrl + 'colorsets/' + id);
   }
 
 }

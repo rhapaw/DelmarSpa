@@ -154,6 +154,14 @@ export class ColorComponent implements OnInit {
     this._alertify.message('Loading default colorset.');
     console.log('Loading default colorset');
     let index = this.colorsets.findIndex( c => c.isDefault);
+    if (index < 0) {
+      // We didn't find a default colorset. We'll set the first colorset
+      // in this.colorsets[] as the default.
+      console.log('No default colorset found - using first.');
+      index = 0;
+      Colorset.deepCopyColorset(this.colorsets[index], this.colorset, true);
+      this.setCurrentColorsetAsDefault();
+      }
     console.log('Default colorset index is: ' + index);
     if (index >= 0) {
       console.log('Index of default colorset is: ' + index);
@@ -162,7 +170,7 @@ export class ColorComponent implements OnInit {
       this.pendingChanges = false;
     } else {
       this.alertify.error
-      // this.alertify.error('There is no default colorset!');
+      this.alertify.error('There is no default colorset!');
     }
   }
 
@@ -252,7 +260,10 @@ export class ColorComponent implements OnInit {
       }
 
       this.colorsetService.deleteColorset(this.colorsets[index].id).subscribe( res => {
-      // If delete was successful, then we load the default colorset.
+      // If delete was successful, then we remove the deleted colorset from this.colorsets[]
+      // and then we load the default colorset.
+      console.log('About to remove deleted colorset from this.colorsets[].');
+      this.colorsets.splice(index, 1);
       console.log('About to load default colorset after deletion.');
       this.loadDefaultColorset();
     }, err => {
@@ -280,8 +291,16 @@ export class ColorComponent implements OnInit {
       this.pendingChanges = false;
       let xx: Colorset = (res as Colorset);
       console.log('New colorset: ' + xx);
-      this.colorset.id = xx.id;
+      // Copy the new colorset to this.colorset and add it to this.colorsets[].
+      Colorset.deepCopyColorset(xx, this.colorset, true);
+      this.colorsets.push(this.colorset);
+      // this.colorset.id = xx.id;
       console.log('New colorset id: ' + xx.id);
+      // Sort by name.
+      this.colorsets.sort( (a: Colorset, b: Colorset) => {
+        return a.colorsetName == b.colorsetName? 0 : a.colorsetName < b.colorsetName? -1: 1;
+      }) ;
+      console.log('colorsets[]: ' + this.colorsets);
     }, err => {
       // show the error
       console.log('Failed to create colorset: ' + this.colorset.colorsetName);
