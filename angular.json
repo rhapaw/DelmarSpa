@@ -141,5 +141,8 @@
       }
     }
   },
-  "defaultProject": "delmar1"
+  "defaultProject": "delmar1",
+  "cli": {
+    "analytics": "2dabf132-1fde-4c70-8518-e21ab041ff17"
+  }
 }
